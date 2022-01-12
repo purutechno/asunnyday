@@ -10,12 +10,6 @@ class TextWidget extends StatelessWidget {
   final TextAlign textAlign;
   final int? maxLines;
   final TextOverflow overflow;
-  final bool processText;
-  final bool showArticleHighlight;
-  final bool showDictionaryHighlight;
-
-  final List<String> dictionaryIgnoreTerms;
-  final List<String> articleIgnoreTerms;
 
   const TextWidget(
     Key? key, {
@@ -27,16 +21,11 @@ class TextWidget extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
-    this.processText = true,
-    this.showArticleHighlight = false,
-    this.showDictionaryHighlight = false,
-    this.dictionaryIgnoreTerms = const [],
-    this.articleIgnoreTerms = const [],
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = TextStyle(
+    final _textStyle = TextStyle(
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontWeight: fontWeight,
@@ -49,7 +38,7 @@ class TextWidget extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       softWrap: maxLines != 1,
-      style: textStyle,
+      style: _textStyle,
     );
   }
 }
