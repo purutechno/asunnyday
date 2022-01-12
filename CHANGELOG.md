@@ -8,9 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 - Readme.md for project information and setup guide,
 - Basic Project structure using MVVM design pattern,
-- constant colors for Colors - AppColors,
+- constant colors for Colors - AppTheme,
 - ThemeData for App Theme,
 - Common Widget for Text - TextWidget,
+- Provider as a state management library,
+
+
 
 ### Changed
 -

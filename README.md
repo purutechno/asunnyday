@@ -5,7 +5,8 @@ Weather Updates
 ## Getting Started
 
 #Overview
-asunnyday is a weather application that displays the current
+asunnyday is a weather application based on MVVM design pattern and
+uses Provider as a state management library. This app displays the current
 weather based on users location. It also has a search section
 through which user can search for a city to view the current
 weather condition.
@@ -25,7 +26,7 @@ It uses the following Fonts available in assets/fonts:
 It uses the following API for displaying weather:
 1) AccuWeather
 
-It uses the following API to display suggestions for searched city:
+It uses the following API to display suggestions of city for a keyword:
 1) AccuWeather
 
 It uses the following API to display weather of searched city:
