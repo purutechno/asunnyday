@@ -1,6 +1,3 @@
-import 'package:asunnyday/view/widgets/search_widget.dart';
-import 'package:asunnyday/view/widgets/text_widget.dart';
-import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
