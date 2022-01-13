@@ -12,10 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ThemeData for App Theme,
 - Common Widget for Text - TextWidget,
 - Provider as a state management library,
+- Multi Language Support,
+- InitScreen for Primary operations,
 
 
 
 ### Changed
+- Changed key of TextWidget as optional parameter
 -
 
 ### Fixed

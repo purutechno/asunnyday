@@ -1,5 +1,6 @@
 import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/view/screens/home_screen.dart';
+import 'package:asunnyday/view/screens/init_screen.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:asunnyday/view_model/home/current_weather_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: Constants.supportedLanguagesCodes.map((e) => Locale(e, '')).toList(),
-            home: const HomeScreen(),
+            home: const InitScreen(),
           );
         },
       ),
