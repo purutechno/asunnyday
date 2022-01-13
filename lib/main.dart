@@ -22,18 +22,20 @@ class MyApp extends StatelessWidget {
     ]);
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => CurrentLocationProvider()),
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
       ],
       child: Consumer<ThemeProvider>(
         builder: (cxt, themeProvider, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'asunnyday',
             theme: ThemeProvider.lightTheme,
             darkTheme: ThemeProvider.darkTheme,
             themeMode: themeProvider.currentTheme,
             home: const HomeScreen(),
-          )
+          );
         },
       ),
     );
