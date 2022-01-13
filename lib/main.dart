@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     ]);
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AppLanguageProvider()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => CurrentLocationProvider()),
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       child: Consumer2<ThemeProvider, AppLanguageProvider>(
         builder: (cxt, themeProvider, appLanguageProvider, child) {
           return MaterialApp(
+            locale: appLanguageProvider.appLocale,
             debugShowCheckedModeBanner: false,
             title: 'asunnyday',
             theme: ThemeProvider.lightTheme,

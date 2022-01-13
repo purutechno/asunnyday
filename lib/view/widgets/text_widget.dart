@@ -12,7 +12,7 @@ class TextWidget extends StatelessWidget {
   final TextOverflow overflow;
 
   const TextWidget(
-    Key? key, {
+     {Key? key,
     required this.text,
     this.fontColor = AppTheme.colorBlack,
     this.fontSize = AppTheme.fontSizeTTCommonsPro,

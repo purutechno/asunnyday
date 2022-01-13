@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class AppLanguageProvider extends ChangeNotifier {
   Locale? _appLocale;
 
-  Locale get appLocale => _appLocale ?? const Locale("sv");
+  Locale get appLocale => _appLocale ?? const Locale("en");
 
   String getLanguageCode() {
     if (appLocale.languageCode == "sv") {
