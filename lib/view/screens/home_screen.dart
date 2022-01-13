@@ -16,20 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  //Testing search widget
-  final TextEditingController _controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SearchWidget(
-            onCitySelected: () {},
-            typeAheadController: _controller,
-            focusNode: FocusNode(),
-          )
+
         ],
       ),
     );
