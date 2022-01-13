@@ -16,7 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - InitScreen for Primary operations,
 - flutter_typeahead for dropdown search suggestion,
 - Search Widget,
-
+- Permission Question Screen,
+- Common Widget for Button - Button Widget,
 
 
 
