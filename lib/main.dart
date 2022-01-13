@@ -25,12 +25,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CurrentLocationProvider()),
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
       ],
-      child: MaterialApp(
-        title: 'asunnyday',
-        theme: ThemeProvider.lightTheme,
-        darkTheme: ThemeProvider.darkTheme,
-        themeMode: currentTheme.currentTheme,
-        home: const HomeScreen(),
+      child: Consumer<ThemeProvider>(
+        builder: (cxt, themeProvider, child) {
+          return MaterialApp(
+            title: 'asunnyday',
+            theme: ThemeProvider.lightTheme,
+            darkTheme: ThemeProvider.darkTheme,
+            themeMode: themeProvider.currentTheme,
+            home: const HomeScreen(),
+          )
+        },
       ),
     );
   }

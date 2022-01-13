@@ -1,10 +1,8 @@
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 
-ThemeProvider currentTheme = ThemeProvider();
-
 class ThemeProvider with ChangeNotifier {
-  static bool _isDarkTheme = true;
+  bool _isDarkTheme = true;
 
   ThemeMode get currentTheme => _isDarkTheme ? ThemeMode.dark : ThemeMode.light;
 
