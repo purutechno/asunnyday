@@ -1,3 +1,5 @@
 {
-  "welcome": "welcome"
+  "welcome": "welcome I'm a different language",
+  "search_for_a_city": "Search City",
+  "no_city_found": "City Not Found"
 }

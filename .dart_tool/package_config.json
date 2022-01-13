@@ -56,6 +56,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_keyboard_visibility",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_keyboard_visibility-5.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_keyboard_visibility_platform_interface",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_keyboard_visibility_platform_interface-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_keyboard_visibility_web",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_keyboard_visibility_web-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
       "packageUri": "lib/",
@@ -74,8 +92,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_typeahead",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_typeahead-3.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -106,6 +142,12 @@
     {
       "name": "path",
       "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -176,7 +218,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-01-13T12:45:00.321694Z",
+  "generated": "2022-01-13T14:31:24.991706Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }

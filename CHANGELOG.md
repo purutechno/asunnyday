@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Provider as a state management library,
 - Multi Language Support,
 - InitScreen for Primary operations,
+- flutter_typeahead for dropdown search suggestion,
+- Search Widget,
+
 
 
 

@@ -1,5 +1,4 @@
 import 'package:asunnyday/utils/constants.dart';
-import 'package:asunnyday/view/screens/home_screen.dart';
 import 'package:asunnyday/view/screens/init_screen.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:asunnyday/view_model/home/current_weather_provider.dart';
