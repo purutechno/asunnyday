@@ -62,8 +62,20 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/purushottam/Documents/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///Users/purushottam/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -164,7 +176,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-01-12T20:15:37.066889Z",
+  "generated": "2022-01-13T12:45:00.321694Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }
