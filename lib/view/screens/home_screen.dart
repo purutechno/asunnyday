@@ -19,9 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextWidget(text: "This is Home Screen!")
-        ],
+        children: [TextWidget(text: "This is Home Screen!")],
       ),
     );
   }
