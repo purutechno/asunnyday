@@ -1,52 +1,45 @@
 import 'package:asunnyday/routers.dart';
-import 'package:asunnyday/utils/snackbar_creator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
 class PermissionProvider extends ChangeNotifier {
-  static const _serviceNotEnabled = "Service Not Enabled";
-  static const _locationServiceDenied = "We need Location Service!";
   bool isPermissionGranted = false;
   bool isLocationServiceEnabled = false;
 
-  dynamic checkForLocationPermission(BuildContext context) async {
+  dynamic checkForLocationPermission(BuildContext context, {bool requestOnceMore = false}) async {
     LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
+    if ((permission == LocationPermission.unableToDetermine) ||
+        requestOnceMore ||
+        (permission == LocationPermission.denied)) {
       permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        isPermissionGranted = false;
-        return;
-      } else if (permission == LocationPermission.deniedForever) {
-        isLocationServiceEnabled = false;
-        return;
-      } else {
-        isPermissionGranted = true;
-        return;
-      }
     }
+    if (permission == LocationPermission.denied) {
+      isPermissionGranted = false;
+    } else if (permission == LocationPermission.deniedForever) {
+      isPermissionGranted = false;
+    } else if ((permission == LocationPermission.whileInUse) || (permission == LocationPermission.always)) {
+      isPermissionGranted = true;
+    }
+    return;
   }
 
   dynamic checkForLocationService(BuildContext context) async {
     bool _serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!_serviceEnabled) {
-      isLocationServiceEnabled = false;
-      SnackBarCreator.showSnackBar(context, _serviceNotEnabled);
-      return;
-    } else {
+    if (_serviceEnabled) {
       isLocationServiceEnabled = true;
-      return;
+    } else {
+      isLocationServiceEnabled = false;
     }
+    return;
   }
 
-  Future<void> initializePermissionAndNavigate(BuildContext context) async {
-    await checkForLocationPermission(context);
+  Future<void> initializePermissionAndNavigate(BuildContext context, {bool questionScreen = true}) async {
+    await checkForLocationPermission(context, requestOnceMore: !questionScreen);
     await checkForLocationService(context);
     if (isPermissionGranted && isLocationServiceEnabled) {
       Routers.showHomeScreen(context);
-      return;
-    } else if ((isPermissionGranted == false) || (isLocationServiceEnabled == false)) {
+    } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
       Routers.showPermissionQuestionScreen(context);
-      return;
     } else {
       denyPermissionAndNavigate(context);
     }

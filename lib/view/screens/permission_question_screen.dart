@@ -29,6 +29,7 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
   @override
   void initState() {
     _permissionProvider = Provider.of<PermissionProvider>(context, listen: false);
+    Future.delayed(const Duration(milliseconds: 100)).then((_) => setState(() => _scale = 1.0));
     super.initState();
   }
 
@@ -39,95 +40,100 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AnimatedScale(
-            duration: _duration,
-            scale: _scale,
-            curve: _curve,
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppTheme.colorWhite,
-                borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
-              ),
-              child: Stack(
-                children: [
-                  //Close Button
-                  Positioned(
-                    top: 5.0,
-                    right: 5.0,
-                    child: GestureDetector(
-                      onTap: () async {
-                        if (!_closeInProgress) {
-                          await _handleAnswer(context, false);
-                        }
-                      },
-                      behavior: HitTestBehavior.translucent,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: AppTheme.sizeRoundButtonBase,
-                        width: AppTheme.sizeRoundButtonBase,
-                        child: const Icon(
-                          Icons.close,
-                          size: AppTheme.sizeRoundButtonIcon,
+          Padding(
+            padding: const EdgeInsets.only(left: AppTheme.defaultPadding, right: AppTheme.defaultPadding),
+            child: AnimatedScale(
+              duration: _duration,
+              scale: _scale,
+              curve: _curve,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppTheme.colorWhite,
+                  borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
+                ),
+                child: Stack(
+                  children: [
+                    //Close Button
+                    Positioned(
+                      top: 5.0,
+                      right: 5.0,
+                      child: GestureDetector(
+                        onTap: () async {
+                          if (!_closeInProgress) {
+                            await _handleAnswer(context, false);
+                          }
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: AppTheme.sizeRoundButtonBase,
+                          width: AppTheme.sizeRoundButtonBase,
+                          child: const Icon(
+                            Icons.close,
+                            size: AppTheme.sizeRoundButtonIcon,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  //body
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(AppTheme.defaultPadding),
-                    child: Column(
-                      children: [
-                        _sizedBoxWithDefaultPadding,
-                        //For Title
-                        TextWidget(
-                          text: AppLocalizations.of(context).translate('activate_permission_title'),
-                          fontFamily: AppTheme.fontFamilyButler,
-                          fontSize: AppTheme.fontSizeButler,
-                          fontColor: AppTheme.colorBlackPurple,
-                          textAlign: TextAlign.center,
-                        ),
-                        _sizedBoxWithDefaultPadding,
-                        //For Description
-                        TextWidget(
-                          text: AppLocalizations.of(context).translate('activate_permission_description'),
-                          fontFamily: AppTheme.fontFamilyTTCommonsPro,
-                          fontSize: AppTheme.fontSizeTTCommonsPro,
-                          fontColor: AppTheme.colorBlackPurple,
-                          textAlign: TextAlign.center,
-                        ),
-                        _sizedBoxWithDefaultPadding,
-                        //Agree Button
-                        ButtonWidget(
-                          text: AppLocalizations.of(context).translate('activate'),
-                          textColor: AppTheme.colorWhite,
-                          backgroundColor: AppTheme.colorPurple,
-                          width: AppTheme.modalButtonStandardWidth,
-                          onPressed: () async {
-                            if (!_closeInProgress) {
-                              await _handleAnswer(context, true);
-                            }
-                          },
-                        ),
-                        _sizedBoxWithDefaultPadding,
-                        //Deny Button
-                        ButtonWidget(
-                          text: AppLocalizations.of(context).translate('hell_no'),
-                          textColor: AppTheme.colorBrownBeige,
-                          width: AppTheme.modalButtonStandardWidth,
-                          height: AppTheme.smallerButtonSize,
-                          noBackground: true,
-                          onPressed: () async {
-                            if (!_closeInProgress) {
-                              await _handleAnswer(context, false);
-                            }
-                          },
-                          showLoadingIndicator: _closeInProgress,
-                        ),
-                      ],
+                    //body
+                    Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(AppTheme.defaultPadding),
+                      child: Column(
+                        children: [
+                          _sizedBoxWithDefaultPadding,
+                          //For Title
+                          TextWidget(
+                            text: AppLocalizations.of(context).translate('activate_permission_title'),
+                            fontFamily: AppTheme.fontFamilyButler,
+                            fontSize: AppTheme.fontSizeButler,
+                            fontColor: AppTheme.colorBlackPurple,
+                            textAlign: TextAlign.center,
+                          ),
+                          _sizedBoxWithDefaultPadding,
+                          //For Description
+                          TextWidget(
+                            text: AppLocalizations.of(context).translate('activate_permission_description'),
+                            fontFamily: AppTheme.fontFamilyTTCommonsPro,
+                            fontSize: AppTheme.fontSizeTTCommonsPro,
+                            fontColor: AppTheme.colorBlackPurple,
+                            maxLines: AppTheme.maxTextLines,
+                            textAlign: TextAlign.center,
+                          ),
+                          _sizedBoxWithDefaultPadding,
+                          //Agree Button
+                          ButtonWidget(
+                            text: AppLocalizations.of(context).translate('activate'),
+                            textColor: AppTheme.colorWhite,
+                            backgroundColor: AppTheme.colorGreen,
+                            width: AppTheme.modalButtonStandardWidth,
+                            onPressed: () async {
+                              if (!_closeInProgress) {
+                                await _handleAnswer(context, true);
+                              }
+                            },
+                          ),
+                          _sizedBoxWithDefaultPadding,
+                          //Deny Button
+                          ButtonWidget(
+                            text: AppLocalizations.of(context).translate('hell_no'),
+                            textColor: AppTheme.colorCreamyWhite,
+                            backgroundColor: AppTheme.colorPurple5,
+                            width: AppTheme.modalButtonStandardWidth,
+                            height: AppTheme.smallerButtonSize,
+                            noBackground: true,
+                            onPressed: () async {
+                              if (!_closeInProgress) {
+                                await _handleAnswer(context, false);
+                              }
+                            },
+                            showLoadingIndicator: _closeInProgress,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -142,7 +148,7 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
   ) async {
     setState(() => _closeInProgress = true);
     if (activateLocation) {
-      await _permissionProvider.initializePermissionAndNavigate(context);
+      await _permissionProvider.initializePermissionAndNavigate(context, questionScreen: false);
       return;
     }
     await _navigateToNextScreen(ctx);
@@ -160,5 +166,6 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
     });
     await Future.delayed(_duration);
     _permissionProvider.denyPermissionAndNavigate(context);
+    return;
   }
 }

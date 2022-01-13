@@ -20,9 +20,7 @@ class _InitScreenState extends State<InitScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-      child: CircularProgressIndicator(),
-    ));
+    //TODO: Implement Splash Screen 1
+    return const Scaffold();
   }
 }

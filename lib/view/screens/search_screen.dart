@@ -6,8 +6,10 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextWidget(text: "This is search Screen",),
+    return Scaffold(
+      body: Container(
+        child: TextWidget(text: "This is search Screen",),
+      ),
     );
   }
 }

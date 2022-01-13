@@ -2,8 +2,8 @@
   "welcome": "I am English welcome",
   "search_for_a_city": "Search City",
   "no_city_found": "City Not Found",
-  "activate_permission_title" : "Location Permission",
-  "activate_permission_description": "Please give us permission to access your location so that we can display weather",
+  "activate_permission_title": "Location Permission",
+  "activate_permission_description": "Please give us permission to access your location so that we can display weather.\n Also make sure to ENABLE LOCATION SERVICE in your device.",
   "activate": "Sure!",
   "hell_no": "No Way!"
 }
