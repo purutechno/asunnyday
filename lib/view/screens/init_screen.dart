@@ -19,7 +19,6 @@ class _InitScreenState extends State<InitScreen> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback((_) => const HomeScreen());
-    return Container();
+    return const HomeScreen();
   }
 }
