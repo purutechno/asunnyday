@@ -2,6 +2,7 @@ import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/view/screens/init_screen.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:asunnyday/view_model/home/current_weather_provider.dart';
+import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
@@ -17,7 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => CurrentLocationProvider()),
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
+        ChangeNotifierProvider(create: (_) => PermissionProvider()),
       ],
       //For Theme and Language
       child: Consumer2<ThemeProvider, AppLanguageProvider>(

@@ -1,5 +1,6 @@
 import 'package:asunnyday/view/screens/home_screen.dart';
 import 'package:asunnyday/view/screens/permission_question_screen.dart';
+import 'package:asunnyday/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
@@ -10,9 +11,12 @@ enum RouteAnimationType {
   fade,
 }
 
-class Router {
+class Routers {
+  static void showSearchScreen(BuildContext ctx) =>
+      _push(ctx, const SearchScreen(), animation: RouteAnimationType.horizontal);
+
   static void showHomeScreen(BuildContext ctx) =>
-      _push(ctx, const HomeScreen(), animation: RouteAnimationType.vertical);
+      _push(ctx, const HomeScreen(), animation: RouteAnimationType.horizontal);
 
   static void showPermissionQuestionScreen(BuildContext ctx) =>
       _push(ctx, const PermissionQuestionScreen(), animation: RouteAnimationType.vertical);

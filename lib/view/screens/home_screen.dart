@@ -1,3 +1,4 @@
+import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
+          TextWidget(text: "This is Home Screen!")
         ],
       ),
     );
