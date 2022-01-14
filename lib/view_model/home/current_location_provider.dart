@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:asunnyday/model/city_response.dart';
-import 'package:asunnyday/utils/null_replacer.dart';
 import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
 import 'package:asunnyday/view_model/api_helper/base_api_helpers.dart';
 import 'package:asunnyday/view_model/api_helper/base_apis.dart';
@@ -24,15 +23,13 @@ class CurrentLocationProvider extends ChangeNotifier {
     //checking to make sure the latitude nad longitude are not null
     if ((position?.latitude != null) && (position?.longitude != null)) {
       try {
-        var url = Uri.parse(BaseApis.cityByLatitudeAndLongitude);
-        var rawResponse = await http.get(url,
-            headers: BaseApiHelpers.headersForCityName(
-                latitude: position?.latitude ?? NullReplacer.latitude,
-                longitude: position?.longitude ?? NullReplacer.longitude));
+        var url = Uri.parse(
+            BaseApis.cityByLatitudeAndLongitude(latitude: position?.latitude, longitude: position?.longitude));
+        var rawResponse = await http.get(url);
         var apiResponse = BaseApiHelpers.returnResponse(rawResponse);
         cityResponse = CityResponse.fromJson(apiResponse);
       } on SocketException {
-        //print('No Interner Connection');
+        //print('No Internet Connection');
         throw FetchDataException('No Internet connection');
       }
     } else {

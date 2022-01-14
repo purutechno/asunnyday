@@ -1,16 +1,8 @@
 import 'dart:convert';
-import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
 import 'package:http/http.dart' as http;
 
 class BaseApiHelpers {
-  static Map<String, String> headersForCityName({
-    required double latitude,
-    required double longitude,
-  }) {
-    return {'apiKey': Constants.accuWeatherApiKey, 'q': '$latitude,$longitude'};
-  }
-
   static dynamic returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
