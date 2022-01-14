@@ -8,10 +8,13 @@ class BaseApis {
   static const String _geoPosition = "geoposition";
   static const String _autoComplete = "autocomplete";
   static const _baseUrlForOneDayWeatherForecast = "/forecasts/v1/daily/1day/";
-  static const String _action = "/search?";
+  static const String _action = "/search";
   static const String _apiKeyString = "?apikey=";
   static const String _query = "&q=";
   static const String _comma = "%2C";
+
+
+/*  apikey=V33VW106EG9Xf2EpZ5mSATRi5yMd9b6v&q=37.4219481%2C-122.0835072"*/
 
   //Query URL to fetch the details of a city by latitude and longitude
   static String cityByLatitudeAndLongitude(

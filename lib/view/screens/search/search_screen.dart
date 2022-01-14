@@ -37,7 +37,6 @@ class SearchScreen extends StatelessWidget {
                     searchController: searchStateProvider.searchController,
                     focusNode: searchStateProvider.searchNode,
                     onCitySelected: () async {
-                      //TODO:
 /*                      Provider.of<MultiCityProvider>(context, listen: false).onSuggestionTapped(
                           context, locationKey: locationKey, cityName: cityName)*/
                     }),

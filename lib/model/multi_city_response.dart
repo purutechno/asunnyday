@@ -5,7 +5,7 @@ class MultiCityResponse {
 
   MultiCityResponse(this.multiCityResponse);
 
-  MultiCityResponse.fromJson(List<Map<String, dynamic>> json) {
+  MultiCityResponse.fromJson(List<dynamic> json) {
     multiCityResponse = [];
     for (int a = 0; a < json.length; a++) {
       //Adding City Name, Administrative Area and County for precise selection

@@ -21,6 +21,7 @@ class MultiCityProvider extends ChangeNotifier {
   List<String> cityNAmes = [];
 
   //This value is obtained when a user selects on a suggestion
+  //TODO:
   SingleCityResponse? selectedCity;
 
   //This function gets the list of multiple city suggestions from
