@@ -1,11 +1,9 @@
-import 'package:asunnyday/routers.dart';
+import 'package:asunnyday/utils/snackbar_creator.dart';
 import 'package:asunnyday/view/screens/search/widget/search_widget.dart';
 import 'package:asunnyday/view/widgets/button_widget.dart';
-import 'package:asunnyday/view/widgets/loading_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
-import 'package:asunnyday/view_model/weather/current_weather_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,10 +14,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _safeAreaHeight = MediaQuery
-        .of(context)
-        .viewPadding
-        .top;
+    final _safeAreaHeight = MediaQuery.of(context).viewPadding.top;
     //This Consumer provides the state for Search Operation
     return Consumer<SearchStateProvider>(builder: (cxt, searchStateProvider, child) {
       return GestureDetector(
@@ -41,23 +36,18 @@ class SearchScreen extends StatelessWidget {
                     focusNode: searchStateProvider.searchNode,
                     onCitySelected: () {
                       searchStateProvider.searchNode.unfocus();
+                      SnackBarCreator.showSnackBar(context, AppLocalizations.of(context).translate("please_wait"),
+                          millisecond: 200);
                     }),
               ),
             ],
           ),
-          floatingActionButton: Consumer<CurrentWeatherProvider>(
-            builder: (cxt, currentWeatherProvider, child) {
-              return ButtonWidget(
-                text: AppLocalizations.of(context).translate("home_screen"),
-                backgroundColor: AppTheme.colorCreamyWhite,
-                textColor: AppTheme.colorBlackPurple,
-                onPressed: () => Routers.showHomeScreen(cxt, replace: true),
-              )
-            },
-          )
-
-
-          ,
+          floatingActionButton: ButtonWidget(
+            text: AppLocalizations.of(context).translate("home_screen"),
+            backgroundColor: AppTheme.colorCreamyWhite,
+            textColor: AppTheme.colorBlackPurple,
+            onPressed: () => Provider.of<SearchStateProvider>(context).handleNoDataCase(cxt),
+          ),
         ),
       );
     });

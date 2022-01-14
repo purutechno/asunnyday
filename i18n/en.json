@@ -12,6 +12,7 @@
   "degree_celsius": "°C",
   "something_went_wrong": "Something Went Wrong!",
   "please_wait": "Please Wait!",
-  "home_screen": "Home"
+  "home_screen": "Home",
+  "snackBar_could_not_navigate": "No Weather Data Available"
 
 }
