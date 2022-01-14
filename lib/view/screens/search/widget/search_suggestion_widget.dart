@@ -1,24 +1,27 @@
-import 'package:asunnyday/view/widgets/text_widget.dart';
+import 'package:asunnyday/view/screens/search/widget/search_widget.dart';
+import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class SearchSuggestionWidget extends StatelessWidget {
-  final TextStyle textStyle;
-  final String text;
+  final SearchStateProvider searchStateProvider;
 
-  const SearchSuggestionWidget({Key? key, required this.textStyle, required this.text}) : super(key: key);
+  const SearchSuggestionWidget({Key? key, required this.searchStateProvider}) : super(key: key);
+
+  final _padding = const EdgeInsets.all(AppTheme.paddingSmall);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(AppTheme.paddingSmall / 2),
-      child: TextWidget(
-        text: text,
-        fontSize: textStyle.fontSize ?? AppTheme.fontSizeTTCommonsPro,
-        fontFamily: textStyle.fontFamily ?? AppTheme.fontFamilyTTCommonsPro,
-        fontColor: AppTheme.colorGrey,
-        maxLines: 1,
-      ),
+    return Column(
+      children: [
+        Padding(
+          padding: _padding,
+          child: SearchWidget(
+              searchController: searchStateProvider.searchController,
+              focusNode: searchStateProvider.searchNode,
+              onCitySelected: () {}),
+        )
+      ],
     );
   }
 }
