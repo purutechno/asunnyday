@@ -40,11 +40,11 @@ It uses the following API to display weather of searched city:
 
 
 #running on IOS
-
+[TODO: Need a Development Team]
 
 
 #running in Web
-- In Progress [ The app simply takes you to the ]
+- In Progress [ The app simply takes you to the Search City Screen]
 [ TODO: Firebase Hosting ]
 
 #App Flow for Android/IOS
