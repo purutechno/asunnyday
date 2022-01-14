@@ -1,7 +1,7 @@
 import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/view/screens/init_screen.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
-import 'package:asunnyday/view_model/home/current_weather_provider.dart';
+import 'package:asunnyday/view_model/weather/current_weather_provider.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';

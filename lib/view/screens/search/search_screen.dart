@@ -1,4 +1,6 @@
+import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/view/screens/search/widget/search_widget.dart';
+import 'package:asunnyday/view_model/search/multi_city_provider.dart';
 import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +13,10 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _safeAreaHeight = MediaQuery.of(context).viewPadding.top;
+    final _safeAreaHeight = MediaQuery
+        .of(context)
+        .viewPadding
+        .top;
     //This Consumer provides the state for Search Operation
     return Consumer<SearchStateProvider>(builder: (cxt, searchStateProvider, child) {
       return GestureDetector(
@@ -31,7 +36,11 @@ class SearchScreen extends StatelessWidget {
                 child: SearchWidget(
                     searchController: searchStateProvider.searchController,
                     focusNode: searchStateProvider.searchNode,
-                    onCitySelected: () {}),
+                    onCitySelected: () async {
+                      //TODO:
+/*                      Provider.of<MultiCityProvider>(context, listen: false).onSuggestionTapped(
+                          context, locationKey: locationKey, cityName: cityName)*/
+                    }),
               ),
             ],
           ),

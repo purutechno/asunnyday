@@ -19,7 +19,7 @@ class CurrentLocationProvider extends ChangeNotifier {
   }
 
   //This function gets the city cityResponse
-  Future<void> getCurrentCity() async {
+  Future<void> getCurrentCity({bool cityAvailable = false}) async {
     //checking to make sure the latitude nad longitude are not null
     if ((position?.latitude != null) && (position?.longitude != null)) {
       try {

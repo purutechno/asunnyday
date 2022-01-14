@@ -9,5 +9,6 @@
   "minimum_temperature": "Minimum",
   "maximum_temperature": "Maximum",
   "average_temperature": "Average",
-  "degree_celsius": "°C"
+  "degree_celsius": "°C",
+  "something_went_wrong": "Something Went Wrong!"
 }

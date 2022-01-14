@@ -1,6 +1,6 @@
 import 'package:asunnyday/view/screens/home/widget/icon_text_widget.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
-import 'package:asunnyday/view_model/home/current_weather_provider.dart';
+import 'package:asunnyday/view_model/weather/current_weather_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
