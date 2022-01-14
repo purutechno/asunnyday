@@ -18,7 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Search Widget,
 - Permission Question Screen,
 - Common Widget for Button - Button Widget,
-
+- Unit Testing,
+- Home Screen,
+- Notification Question Screen,
+- Search City Screen,
+- Common Loading Widget,
 
 
 ### Changed
@@ -27,3 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 -
+
+
+[ Note: This changelog is very difficult to update since we don't have version launch date - @purushottam]
