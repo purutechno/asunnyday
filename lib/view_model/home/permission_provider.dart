@@ -56,10 +56,10 @@ class PermissionProvider extends ChangeNotifier {
           await _currentLocationProvider.getCurrentCity();
           //Getting Weather Condition of the Current Location
           await Provider.of<CurrentWeatherProvider>(context, listen: false).getWeatherOfCity(context);
-          Routers.showHomeScreen(context,replace: true);
+          Routers.showHomeScreen(context, replace: true);
         } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
           //Displaying the Pop-up with instructions
-          Routers.showPermissionQuestionScreen(context,replace: true);
+          Routers.showPermissionQuestionScreen(context, replace: true);
         } else {
           //Simply Navigate to Search Screen
           denyPermissionAndNavigate(context);
@@ -79,7 +79,7 @@ class PermissionProvider extends ChangeNotifier {
 
   //This Function simply navigates to Search Screen
   void denyPermissionAndNavigate(BuildContext context) {
-    Routers.showSearchScreen(context);
+    Routers.showSearchScreen(context, replace: true);
     return;
   }
 }

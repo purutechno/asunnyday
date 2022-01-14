@@ -11,8 +11,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return WillPopScope(
+      //prevent the user from going back
+      //at Home Screen
+      onWillPop: () async => false,
+      child: Scaffold(
+          body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //Displays The Name of City and Current Date
@@ -28,13 +32,13 @@ class HomeScreen extends StatelessWidget {
               text: AppLocalizations.of(context).translate("search_for_a_city"),
               textColor: AppTheme.colorBlackPurple,
               backgroundColor: AppTheme.colorCreamyWhite,
-              onPressed: () => Routers.showSearchScreen(context)),
+              onPressed: () => Routers.showSearchScreen(context,replace: true)),
           //Bottom Padding
           const SizedBox(
             height: AppTheme.defaultPadding,
           )
         ],
-      )
+      )),
     );
   }
 }

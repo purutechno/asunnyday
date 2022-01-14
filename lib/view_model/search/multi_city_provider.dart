@@ -55,7 +55,7 @@ class MultiCityProvider extends ChangeNotifier {
     //Getting the weather of a city assigned to cityResponse above
     await Provider.of<CurrentWeatherProvider>(ctx, listen: false).getWeatherOfCity(ctx);
     //All values are set. So, navigating to Home Page again to display the Weather
-    Routers.showHomeScreen(ctx);
+    Routers.showHomeScreen(ctx, replace: true);
   }
 
   //This Function is triggered when a user taps on the city suggestions displayed by the users

@@ -2,7 +2,6 @@ import 'package:asunnyday/view/screens/search/widget/suggestion_widget.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/search/multi_city_provider.dart';
-import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -137,9 +136,11 @@ class SearchWidgetConfig extends StatelessWidget {
     );
   }
 
+  //This function generates suggestions based on users' query
   Future<List<String>> getSuggestions(String query, MultiCityProvider multiCityProvider) async {
     multiCityProvider.getMultipleCities(query);
     List<String> matches = [];
+    //TODO: Find a way to make less API calls
     matches.addAll(multiCityProvider.cityNAmes);
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     return matches;

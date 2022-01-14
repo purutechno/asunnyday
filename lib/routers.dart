@@ -4,6 +4,8 @@ import 'package:asunnyday/view/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+//Types of animations for pages
+//while navigating
 enum RouteAnimationType {
   instant,
   horizontal,
@@ -12,14 +14,14 @@ enum RouteAnimationType {
 }
 
 class Routers {
-  static void showSearchScreen(BuildContext ctx) =>
-      _push(ctx, const SearchScreen(), animation: RouteAnimationType.horizontal);
+  static void showSearchScreen(BuildContext ctx, {bool replace = false}) =>
+      _push(ctx, const SearchScreen(), replaceRoute: replace, animation: RouteAnimationType.horizontal);
 
-  static void showHomeScreen(BuildContext ctx,{bool replace = false}) =>
-      _push(ctx, const HomeScreen(), replaceRoute: replace,animation: RouteAnimationType.horizontal);
+  static void showHomeScreen(BuildContext ctx, {bool replace = false}) =>
+      _push(ctx, const HomeScreen(), replaceRoute: replace, animation: RouteAnimationType.horizontal);
 
-  static void showPermissionQuestionScreen(BuildContext ctx,{bool replace = false}) =>
-      _push(ctx, const PermissionQuestionScreen(), replaceRoute: replace,animation: RouteAnimationType.vertical);
+  static void showPermissionQuestionScreen(BuildContext ctx, {bool replace = false}) =>
+      _push(ctx, const PermissionQuestionScreen(), replaceRoute: replace, animation: RouteAnimationType.vertical);
 
   static List<String> _navStackInfo = [];
 
