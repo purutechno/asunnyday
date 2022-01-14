@@ -7,9 +7,8 @@ Weather Updates
 #Overview
 asunnyday is a weather application based on MVVM design pattern and
 uses Provider as a state management library. This app displays the current
-weather based on users location. It also has a search section
-through which user can search for a city to view the current
-weather condition.
+weather based on users location or Searched City.
+
 
 #Screens
 It has the following screens:
@@ -45,3 +44,15 @@ It uses the following API to display weather of searched city:
 
 
 #running in Web
+
+
+
+#App Flow for Android/IOS
+- Install the app -> Open the app -> Location Permission pop-up appears
+On Denied :
+- App Pop-up appears explaining why we need location access -> Navigates to Search Screen
+On Accepted :
+- You're navigated to Home Screen with current Weather Updates for your city
+
+
+#App Flow for Web
