@@ -41,34 +41,39 @@ class PermissionProvider extends ChangeNotifier {
 
   //This function takes care of the routes and permission as a whole
   Future<void> initializePermissionAndNavigate(BuildContext context, {bool questionScreen = true}) async {
-    final _currentLocationProvider = Provider.of<CurrentLocationProvider>(context, listen: false);
-    //Checking if the platform is Android or IOS
-    if (Platform.isAndroid || Platform.isIOS) {
-      //Checking for Location Permission
-      await checkForLocationPermission(context, requestOnceMore: !questionScreen);
-      //Verifying that the location service is enabled
-      await checkForLocationService(context);
-      if (isPermissionGranted && isLocationServiceEnabled) {
-        //Getting Current Location of the User
-        await _currentLocationProvider.getCurrentLocation();
-        await _currentLocationProvider.getCurrentCity();
-        //Getting Weather Condition of the Current Location
-        await Provider.of<CurrentWeatherProvider>(context, listen: false).getWeatherOfCity(context);
-        Routers.showHomeScreen(context);
-      } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
-        //Displaying the Pop-up with instructions
-        Routers.showPermissionQuestionScreen(context);
-      } else {
-        //Simply Navigate to Search Screen
-        denyPermissionAndNavigate(context);
-      }
-    } else {
-      // Web is not able to detect position for users due to error in it's null safe library - @Purushottam
-      //Navigating Directly to Search Screen
-      denyPermissionAndNavigate(context);
-    }
-    //Terminate the function
-    return;
+   try{
+     final _currentLocationProvider = Provider.of<CurrentLocationProvider>(context, listen: false);
+     //Checking if the platform is Android or IOS
+     if (Platform.isAndroid || Platform.isIOS) {
+       //Checking for Location Permission
+       await checkForLocationPermission(context, requestOnceMore: !questionScreen);
+       //Verifying that the location service is enabled
+       await checkForLocationService(context);
+       if (isPermissionGranted && isLocationServiceEnabled) {
+         //Getting Current Location of the User
+         await _currentLocationProvider.getCurrentLocation();
+         await _currentLocationProvider.getCurrentCity();
+         //Getting Weather Condition of the Current Location
+         await Provider.of<CurrentWeatherProvider>(context, listen: false).getWeatherOfCity(context);
+         Routers.showHomeScreen(context);
+       } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
+         //Displaying the Pop-up with instructions
+         Routers.showPermissionQuestionScreen(context);
+       } else {
+         //Simply Navigate to Search Screen
+         denyPermissionAndNavigate(context);
+       }
+     } else {
+       // Web is not able to detect position for users due to error in it's null safe library - @Purushottam
+       //Navigating Directly to Search Screen
+       denyPermissionAndNavigate(context);
+     }
+     //Terminate the function
+     return;
+   }catch(e){
+     //simply navigate to search screen on any exception
+     denyPermissionAndNavigate(context);
+   }
   }
 
   //This Function simply navigates to Search Screen
