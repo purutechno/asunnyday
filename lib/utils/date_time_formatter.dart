@@ -19,14 +19,14 @@ class DateTimeFormatter {
     final DateTime now = DateTime.now();
     final _year = now.year;
     final _month = now.month;
-    final _stringMonth = _formatMonth(_month);
+    final _stringMonth = formatMonth(_month);
     final _day = now.day;
 
     final String formattedDate = "$_day $_stringMonth $_year";
     return formattedDate;
   }
 
-  static String _formatMonth(int month) {
+  static String formatMonth(int month) {
     return _month[month];
   }
 }
