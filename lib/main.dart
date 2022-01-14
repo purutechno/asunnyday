@@ -49,7 +49,8 @@ class MyApp extends StatelessWidget {
         // the accuweather API,
         //For more info, visit :- https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/daily/1day/%7BlocationKey%7D
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
-        //This Provider takes care of asking Location Permission
+        //This Provider takes care of asking Location Permission using
+        // geolocator plugins' default permission handler
         // and navigates to the screen based on users' response for
         //the first time [When the app is opened ]. However, the
         //overall Navigation is facilitates by Routers
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         //This Provider is responsible for getting
         //response of multiple cities based on user's query
         //using the accuweather API
+        //For more info, visit :- https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/autocomplete
         ChangeNotifierProvider(create: (_) => MultiCityProvider()),
       ],
       //Consumer listens to Theme and Language changes

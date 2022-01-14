@@ -2,8 +2,10 @@ import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/utils/null_replacer.dart';
 
 class BaseApis {
-
-  static const accuWeatherApiKey = "CKwELBLHikn9LVHIPs06TggZOQsEfbHj";
+  //Trial Over puruthelancer@gmail.com
+/*  static const accuWeatherApiKey = "CKwELBLHikn9LVHIPs06TggZOQsEfbHj";*/
+  //Trial Over purupokharel06@gmail.com
+  static const accuWeatherApiKey = "V33VW106EG9Xf2EpZ5mSATRi5yMd9b6v";
 
   //Serving URl of API
   static const String _baseUrl = "http://dataservice.accuweather.com";
