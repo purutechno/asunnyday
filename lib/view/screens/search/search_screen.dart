@@ -50,7 +50,7 @@ class SearchScreen extends StatelessWidget {
               text: AppLocalizations.of(context).translate("home_screen"),
               backgroundColor: AppTheme.colorCreamyWhite,
               textColor: AppTheme.colorBlackPurple,
-              onPressed: () => Provider.of<SearchStateProvider>(context).handleNoDataCase(cxt),
+              onPressed: () => Provider.of<SearchStateProvider>(context, listen: false).handleNoDataCase(cxt),
             ),
           ),
         );
