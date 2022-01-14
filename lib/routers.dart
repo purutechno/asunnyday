@@ -15,11 +15,11 @@ class Routers {
   static void showSearchScreen(BuildContext ctx) =>
       _push(ctx, const SearchScreen(), animation: RouteAnimationType.horizontal);
 
-  static void showHomeScreen(BuildContext ctx) =>
-      _push(ctx, const HomeScreen(), animation: RouteAnimationType.horizontal);
+  static void showHomeScreen(BuildContext ctx,{bool replace = false}) =>
+      _push(ctx, const HomeScreen(), replaceRoute: replace,animation: RouteAnimationType.horizontal);
 
-  static void showPermissionQuestionScreen(BuildContext ctx) =>
-      _push(ctx, const PermissionQuestionScreen(), animation: RouteAnimationType.vertical);
+  static void showPermissionQuestionScreen(BuildContext ctx,{bool replace = false}) =>
+      _push(ctx, const PermissionQuestionScreen(), replaceRoute: replace,animation: RouteAnimationType.vertical);
 
   static List<String> _navStackInfo = [];
 

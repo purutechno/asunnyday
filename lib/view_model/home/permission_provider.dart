@@ -16,6 +16,7 @@ class PermissionProvider extends ChangeNotifier {
     if ((permission == LocationPermission.unableToDetermine) ||
         requestOnceMore ||
         (permission == LocationPermission.denied)) {
+      //This requests the permission pop-up for Location Access
       permission = await Geolocator.requestPermission();
     }
     if (permission == LocationPermission.denied) {
@@ -55,10 +56,10 @@ class PermissionProvider extends ChangeNotifier {
           await _currentLocationProvider.getCurrentCity();
           //Getting Weather Condition of the Current Location
           await Provider.of<CurrentWeatherProvider>(context, listen: false).getWeatherOfCity(context);
-          Routers.showHomeScreen(context);
+          Routers.showHomeScreen(context,replace: true);
         } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
           //Displaying the Pop-up with instructions
-          Routers.showPermissionQuestionScreen(context);
+          Routers.showPermissionQuestionScreen(context,replace: true);
         } else {
           //Simply Navigate to Search Screen
           denyPermissionAndNavigate(context);

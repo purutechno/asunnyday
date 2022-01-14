@@ -28,6 +28,7 @@ class WeatherReportWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              //TODO: Make the icon change based on weather condition
               const Icon(
                 Icons.cloud,
                 size: AppTheme.sizeRoundButtonIconLarge,
