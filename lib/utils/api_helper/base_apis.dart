@@ -13,9 +13,6 @@ class BaseApis {
   static const String _query = "&q=";
   static const String _comma = "%2C";
 
-
-/*  apikey=V33VW106EG9Xf2EpZ5mSATRi5yMd9b6v&q=37.4219481%2C-122.0835072"*/
-
   //Query URL to fetch the details of a city by latitude and longitude
   static String cityByLatitudeAndLongitude(
           {double? latitude = NullReplacer.latitude, double? longitude = NullReplacer.longitude}) =>
