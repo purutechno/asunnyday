@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
+import 'package:asunnyday/utils/api_helper/api_exceptions.dart';
 import 'package:http/http.dart' as http;
 
 class BaseApiHelpers {

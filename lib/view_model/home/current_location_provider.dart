@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:asunnyday/model/single_city_response.dart';
-import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
-import 'package:asunnyday/view_model/api_helper/base_api_helpers.dart';
-import 'package:asunnyday/view_model/api_helper/base_apis.dart';
+import 'package:asunnyday/utils/api_helper/api_exceptions.dart';
+import 'package:asunnyday/utils/api_helper/base_api_helpers.dart';
+import 'package:asunnyday/utils/api_helper/base_apis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;

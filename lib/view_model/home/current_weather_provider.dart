@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:asunnyday/model/weather_response.dart';
-import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
-import 'package:asunnyday/view_model/api_helper/base_api_helpers.dart';
-import 'package:asunnyday/view_model/api_helper/base_apis.dart';
+import 'package:asunnyday/utils/api_helper/api_exceptions.dart';
+import 'package:asunnyday/utils/api_helper/base_api_helpers.dart';
+import 'package:asunnyday/utils/api_helper/base_apis.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
