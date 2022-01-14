@@ -44,8 +44,8 @@ It uses the following API to display weather of searched city:
 
 
 #running in Web
-
-
+- In Progress [ The app simply takes you to the ]
+[ TODO: Firebase Hosting ]
 
 #App Flow for Android/IOS
 - Install the app -> Open the app -> Location Permission pop-up appears
@@ -56,3 +56,4 @@ On Accepted :
 
 
 #App Flow for Web
+- This is still in progress however you'll land on Search Screen and it's responsive
