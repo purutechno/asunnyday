@@ -2,7 +2,6 @@ import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/utils/null_replacer.dart';
 
 class BaseApis {
-
   //Serving URl of API
   static const String _baseUrl = "http://dataservice.accuweather.com";
   static const String _baseUrlForCitySearchByPosition = "/locations/v1/cities/";
@@ -23,6 +22,7 @@ class BaseApis {
   static String weatherOfACity(String cityKey) =>
       "$_baseUrl$_baseUrlForOneDayWeatherForecast$cityKey$_apiKeyString${Constants.accuWeatherApiKey}";
 
+  //Query URL to fetch the list of suggested city based on users' query
   static String getCitySuggestions(String query) =>
       "$_baseUrl$_baseUrlForCitySearchByPosition$_autoComplete$_apiKeyString${Constants.accuWeatherApiKey}$_query$query";
 }
