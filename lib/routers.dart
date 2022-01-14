@@ -13,6 +13,8 @@ enum RouteAnimationType {
   fade,
 }
 
+//This class handles the navigation
+//It has animation property, replace = true [ Clears the nav stack ]
 class Routers {
   static void showSearchScreen(BuildContext ctx, {bool replace = false}) =>
       _push(ctx, const SearchScreen(), replaceRoute: replace, animation: RouteAnimationType.horizontal);
