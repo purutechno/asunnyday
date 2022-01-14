@@ -2,11 +2,11 @@ import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class SearchSuggestion extends StatelessWidget {
+class SearchSuggestionWidget extends StatelessWidget {
   final TextStyle textStyle;
   final String text;
 
-  const SearchSuggestion({Key? key, required this.textStyle, required this.text}) : super(key: key);
+  const SearchSuggestionWidget({Key? key, required this.textStyle, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:asunnyday/view/screens/home/home_screen.dart';
 import 'package:asunnyday/view/screens/permission_question_screen.dart';
-import 'package:asunnyday/view/screens/search_screen.dart';
+import 'package:asunnyday/view/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 

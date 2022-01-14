@@ -4,14 +4,10 @@ import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CityAndDateWidget extends StatelessWidget {
-  final CurrentLocationProvider currentLocationProvider;
-
-  CityAndDateWidget({Key? key, required this.currentLocationProvider}) : super(key: key);
-
-  //Getting City Name
-  String _cityName() => currentLocationProvider.cityResponse?.cityName ?? NullReplacer.cityName;
+  CityAndDateWidget({Key? key}) : super(key: key);
 
   // BorderRadius for info container
   static const _borderRadius = BorderRadius.only(
@@ -35,38 +31,40 @@ class CityAndDateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _safeAreaHeight = MediaQuery.of(context).viewPadding.top;
-    return Column(
-      children: [
-        //Painting the safeArea with creamyWhite color
-        Container(
-          height: _safeAreaHeight,
-          color: AppTheme.colorCreamyWhite,
-        ),
-        Container(
-          padding: _padding(_safeAreaHeight),
-          alignment: Alignment.bottomCenter,
-          decoration: _boxDecoration,
-          child: Column(
-            children: [
-              //City Name
-              TextWidget(
-                text: _cityName(),
-                fontSize: AppTheme.fontSizeButler,
-                fontFamily: AppTheme.fontFamilyButler,
-                fontColor: AppTheme.colorBlackPurple,
-              ),
-              const SizedBox(height: AppTheme.paddingSmall),
-              //Current Date
-              TextWidget(
-                text: DateTimeFormatter.formatCurrentDate(),
-                fontSize: AppTheme.fontSizeButler,
-                fontFamily: AppTheme.fontFamilyButler,
-                fontColor: AppTheme.colorBlackPurple,
-              )
-            ],
+    return Consumer<CurrentLocationProvider>(builder: (cxt, currentLocationProvider, child) {
+      return Column(
+        children: [
+          //Painting the safeArea with creamyWhite color
+          Container(
+            height: _safeAreaHeight,
+            color: AppTheme.colorCreamyWhite,
           ),
-        )
-      ],
-    );
+          Container(
+            padding: _padding(_safeAreaHeight),
+            alignment: Alignment.bottomCenter,
+            decoration: _boxDecoration,
+            child: Column(
+              children: [
+                //City Name
+                TextWidget(
+                  text: currentLocationProvider.cityResponse?.cityName ?? NullReplacer.cityName,
+                  fontSize: AppTheme.fontSizeButler,
+                  fontFamily: AppTheme.fontFamilyButler,
+                  fontColor: AppTheme.colorBlackPurple,
+                ),
+                const SizedBox(height: AppTheme.paddingSmall),
+                //Current Date
+                TextWidget(
+                  text: DateTimeFormatter.formatCurrentDate(),
+                  fontSize: AppTheme.fontSizeButler,
+                  fontFamily: AppTheme.fontFamilyButler,
+                  fontColor: AppTheme.colorBlackPurple,
+                )
+              ],
+            ),
+          )
+        ],
+      );
+    });
   }
 }

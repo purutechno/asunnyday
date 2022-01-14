@@ -14,31 +14,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<CurrentLocationProvider>(builder: (cxt, currentLocationProvider, child) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            //Displays The Name of City and Current Date
-            CityAndDateWidget(currentLocationProvider: currentLocationProvider),
-            //Spacing
-            const Spacer(flex: 1),
-            //Displays Current Weather Condition
-            WeatherReportWidget(),
-            //Spacing
-            const Spacer(flex: 1),
-            //Button Widget that navigates to Search Screen
-            ButtonWidget(
-                text: AppLocalizations.of(context).translate("search_for_a_city"),
-                textColor: AppTheme.colorBlackPurple,
-                backgroundColor: AppTheme.colorCreamyWhite,
-                onPressed: () => Routers.showSearchScreen(context)),
-            //Bottom Padding
-            const SizedBox(
-              height: AppTheme.defaultPadding,
-            )
-          ],
-        );
-      }),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          //Displays The Name of City and Current Date
+          CityAndDateWidget(),
+          //Spacing
+          const Spacer(flex: 1),
+          //Displays Current Weather Condition
+          WeatherReportWidget(),
+          //Spacing
+          const Spacer(flex: 1),
+          //Button Widget that navigates to Search Screen
+          ButtonWidget(
+              text: AppLocalizations.of(context).translate("search_for_a_city"),
+              textColor: AppTheme.colorBlackPurple,
+              backgroundColor: AppTheme.colorCreamyWhite,
+              onPressed: () => Routers.showSearchScreen(context)),
+          //Bottom Padding
+          const SizedBox(
+            height: AppTheme.defaultPadding,
+          )
+        ],
+      )
     );
   }
 }

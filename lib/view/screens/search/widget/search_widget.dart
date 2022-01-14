@@ -1,5 +1,5 @@
 import 'package:asunnyday/utils/constants.dart';
-import 'package:asunnyday/view/widgets/search_suggestion.dart';
+import 'package:asunnyday/view/screens/search/widget/search_suggestion_widget.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
@@ -106,11 +106,11 @@ class SearchWidgetConfig extends StatelessWidget {
           hintStyle: textStyle.copyWith(color: AppTheme.colorGrey),
         ),
       ),
-      noItemsFoundBuilder: (ctx) => SearchSuggestion(
+      noItemsFoundBuilder: (ctx) => SearchSuggestionWidget(
         textStyle: textStyle,
         text: AppLocalizations.of(ctx).translate('no_city_found'),
       ),
-      itemBuilder: (ctx, String suggestion) => SearchSuggestion(textStyle: textStyle, text: suggestion),
+      itemBuilder: (ctx, String suggestion) => SearchSuggestionWidget(textStyle: textStyle, text: suggestion),
       transitionBuilder: (ctx, suggestionsBox, ctrl) => suggestionsBox,
       onSuggestionSelected: (String suggestion) {
         typeAheadController.text = suggestion;
