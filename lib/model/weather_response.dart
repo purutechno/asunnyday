@@ -2,8 +2,8 @@ class WeatherResponse {
   //A string that exposes the overall weather condition
   //of a day
   String? weatherExpectation;
-  int? minTemperature;
-  int? maxTemperature;
+  double? minTemperature;
+  double? maxTemperature;
 
   WeatherResponse(this.weatherExpectation, this.maxTemperature, this.minTemperature);
 

@@ -115,7 +115,7 @@ class AppTheme {
 
   static const double sizeRoundButtonBase = 50;
   static const double sizeRoundButtonBaseLarge = 179;
-  static const double sizeRoundButtonIcon = 20;
+  static const double sizeRoundButtonIcon =25;
   static const double sizeRoundButtonIconLarge = 100;
 
   static const double sizeDefaultButton = 60;

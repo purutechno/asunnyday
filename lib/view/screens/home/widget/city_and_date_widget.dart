@@ -56,7 +56,7 @@ class CityAndDateWidget extends StatelessWidget {
                 fontColor: AppTheme.colorBlackPurple,
               ),
               const SizedBox(height: AppTheme.paddingSmall),
-              //Date and Time
+              //Current Date
               TextWidget(
                 text: DateTimeFormatter.formatCurrentDate(),
                 fontSize: AppTheme.fontSizeButler,

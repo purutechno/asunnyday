@@ -1,6 +1,6 @@
 import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/view/widgets/button_widget.dart';
-import 'package:asunnyday/view/widgets/city_and_date_widget.dart';
+import 'package:asunnyday/view/screens/home/widget/city_and_date_widget.dart';
 import 'package:asunnyday/view/widgets/weather_report_widget.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             //Spacing
             const Spacer(flex: 1),
             //Displays Current Weather Condition
-            WeatherReport(),
+            WeatherReportWidget(),
             //Spacing
             const Spacer(flex: 1),
             //Button Widget that navigates to Search Screen

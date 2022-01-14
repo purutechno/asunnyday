@@ -8,6 +8,7 @@
   "hell_no": "No Way!",
   "minimum_temperature": "Minimum",
   "maximum_temperature": "Maximum",
-  "average_temperature" : "Average"
+  "average_temperature" : "Average",
+  "degree_celsius": "°C"
 
 }

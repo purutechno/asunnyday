@@ -1,4 +1,4 @@
-import 'package:asunnyday/view/screens/home_screen.dart';
+import 'package:asunnyday/view/screens/home/home_screen.dart';
 import 'package:asunnyday/view/screens/permission_question_screen.dart';
 import 'package:asunnyday/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';

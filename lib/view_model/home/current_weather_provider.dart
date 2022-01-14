@@ -24,8 +24,8 @@ class CurrentWeatherProvider extends ChangeNotifier {
         //converting Fahrenheit scale to Celsius
         this.weatherResponse = WeatherResponse(
             weatherResponse.weatherExpectation,
-            _convertFahrenheitToCelsius(weatherResponse.maxTemperature),
-            _convertFahrenheitToCelsius(weatherResponse.minTemperature));
+            _convertFahrenheitToCelsius(weatherResponse.maxTemperature).toDouble(),
+            _convertFahrenheitToCelsius(weatherResponse.minTemperature).toDouble());
         //getting Average Temperature
         _getAverageTemperature();
       } on SocketException {
@@ -36,7 +36,7 @@ class CurrentWeatherProvider extends ChangeNotifier {
   }
 
   //Converts the Fahrenheit scale into Celsius
-  int _convertFahrenheitToCelsius(int? tempInFahrenheit) {
+  int _convertFahrenheitToCelsius(double? tempInFahrenheit) {
     return (((tempInFahrenheit ?? 0) - 32) * (5 / 9)).toInt();
   }
 

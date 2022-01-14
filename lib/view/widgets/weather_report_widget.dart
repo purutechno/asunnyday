@@ -1,4 +1,4 @@
-import 'package:asunnyday/model/weather_response.dart';
+import 'package:asunnyday/view/screens/home/widget/icon_text_widget.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/home/current_weather_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
@@ -6,12 +6,12 @@ import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WeatherReport extends StatelessWidget {
-  WeatherReport({Key? key}) : super(key: key);
+class WeatherReportWidget extends StatelessWidget {
+  WeatherReportWidget({Key? key}) : super(key: key);
 
   final BoxDecoration _boxDecoration =
       BoxDecoration(shape: BoxShape.circle, color: AppTheme.colorCreamyWhite, boxShadow: [AppTheme.boxShadowWhite]);
-  static const _padding = EdgeInsets.all(AppTheme.defaultPadding);
+  static const _padding = EdgeInsets.all(AppTheme.paddingSmall);
   final _smallPadding = const SizedBox(height: AppTheme.paddingSmall);
 
   @override
@@ -35,32 +35,34 @@ class WeatherReport extends StatelessWidget {
               ),
               _smallPadding,
               //Shows Maximum Temperature
-              TextWidget(
+              IconTextWidget(
                   text:
-                      "${currentWeatherProvider.weatherResponse?.maxTemperature} ${AppLocalizations.of(context).translate("maximum_temperature")}",
-                  fontColor: AppTheme.colorBlackPurple,
-                  fontSize: AppTheme.fontSizeTTCommonsPro,
-                  fontWeight: AppTheme.fontWeight700),
+                      "${currentWeatherProvider.weatherResponse?.maxTemperature}${AppLocalizations.of(context).translate("degree_celsius")}"
+                      " ${AppLocalizations.of(context).translate("maximum_temperature")}",
+                  textColor: AppTheme.colorBlackPurple,
+                  isMax: true),
               _smallPadding,
               //Shows Average Temperature
-              TextWidget(
+              IconTextWidget(
                   text:
-                      "${currentWeatherProvider.averageTemperature} ${AppLocalizations.of(context).translate("average_temperature")}",
-                  fontColor: AppTheme.colorBlackPurple,
-                  fontSize: AppTheme.fontSizeTTCommonsPro,
-                  fontWeight: AppTheme.fontWeight700),
+                      "${currentWeatherProvider.averageTemperature}${AppLocalizations.of(context).translate("degree_celsius")} "
+                      "${AppLocalizations.of(context).translate("average_temperature")}",
+                  textColor: AppTheme.colorBlackPurple,
+                  isAverage: true),
               _smallPadding,
               //Shows Average Temperature
+              IconTextWidget(
+                text:
+                    "${currentWeatherProvider.weatherResponse?.minTemperature}${AppLocalizations.of(context).translate("degree_celsius")} "
+                    "${AppLocalizations.of(context).translate("minimum_temperature")}",
+                isMin: true,
+                textColor: AppTheme.colorBlackPurple,
+              ),
+              _smallPadding,
+              //Shows the day's average weather condition in a statement
               TextWidget(
-                  text:
-                      "${currentWeatherProvider.weatherResponse?.minTemperature} ${AppLocalizations.of(context).translate("minimum_temperature")}",
+                  text: "${currentWeatherProvider.weatherResponse?.weatherExpectation}",
                   fontColor: AppTheme.colorBlackPurple,
-                  fontSize: AppTheme.fontSizeTTCommonsPro,
-                  fontWeight: AppTheme.fontWeight700),
-              const SizedBox(height: AppTheme.defaultPadding),
-              const TextWidget(
-                  text: "Mostly Cloudy",
-                  fontColor: AppTheme.colorPurple,
                   fontFamily: AppTheme.fontFamilyButler,
                   fontSize: AppTheme.fontSizeButlerMedium,
                   fontWeight: AppTheme.fontWeight700),
