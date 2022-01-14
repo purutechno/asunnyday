@@ -123,7 +123,11 @@ class SearchWidgetConfig extends StatelessWidget {
           itemBuilder: (ctx, String suggestion) => SuggestionWidget(textStyle: textStyle, text: suggestion),
           transitionBuilder: (ctx, suggestionsBox, ctrl) => suggestionsBox,
           //This method is triggered when a suggestion is clicked
-          onSuggestionSelected: (String suggestion) {
+          onSuggestionSelected: (String suggestion) async {
+            multiCityProvider.onSuggestionCallback(suggestion);
+            await multiCityProvider.getWeatherAndNavigate(cxt,
+                locationKey: multiCityProvider.selectedCity?.locationKey,
+                cityName: multiCityProvider.selectedCity?.cityName);
             searchController.text = suggestion;
             onSelected();
           },

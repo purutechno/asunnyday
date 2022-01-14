@@ -13,10 +13,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _safeAreaHeight = MediaQuery
-        .of(context)
-        .viewPadding
-        .top;
+    final _safeAreaHeight = MediaQuery.of(context).viewPadding.top;
     //This Consumer provides the state for Search Operation
     return Consumer<SearchStateProvider>(builder: (cxt, searchStateProvider, child) {
       return GestureDetector(
@@ -36,10 +33,7 @@ class SearchScreen extends StatelessWidget {
                 child: SearchWidget(
                     searchController: searchStateProvider.searchController,
                     focusNode: searchStateProvider.searchNode,
-                    onCitySelected: () async {
-/*                      Provider.of<MultiCityProvider>(context, listen: false).onSuggestionTapped(
-                          context, locationKey: locationKey, cityName: cityName)*/
-                    }),
+                    onCitySelected: () {}),
               ),
             ],
           ),
