@@ -5,6 +5,7 @@ import 'package:asunnyday/view_model/home/current_weather_provider.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
+import 'package:asunnyday/view_model/search/multi_city_provider.dart';
 import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +39,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         //This Provider can get the users current location
         //if the user has accepted location permission and
-        //enabled location
+        //enabled location using geolocator plugin
+        //For more info, visit :- https://pub.dev/packages/geolocator
+        //It also uses the accuweather API to get the name of the city,
+        //For more info, visit :- https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/geoposition/search
         ChangeNotifierProvider(create: (_) => CurrentLocationProvider()),
         //This Provider can get the weather details
         // of a place based on it's location key using
-        // the accuweather API
+        // the accuweather API,
+        //For more info, visit :- https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/daily/1day/%7BlocationKey%7D
         ChangeNotifierProvider(create: (_) => CurrentWeatherProvider()),
         //This Provider takes care of asking Location Permission
         // and navigates to the screen based on users' response for
@@ -52,6 +57,10 @@ class MyApp extends StatelessWidget {
         //This Provider is simply responsible for handling the
         //state of Search Screen
         ChangeNotifierProvider(create: (_) => SearchStateProvider()),
+        //This Provider is responsible for getting
+        //response of multiple cities based on user's query
+        //using the accuweather API
+        ChangeNotifierProvider(create: (_) => MultiCityProvider()),
       ],
       //Consumer listens to Theme and Language changes
       child: Consumer2<ThemeProvider, AppLanguageProvider>(
