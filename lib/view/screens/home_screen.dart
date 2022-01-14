@@ -8,18 +8,8 @@ import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +18,21 @@ class _HomeScreenState extends State<HomeScreen> {
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            //Displays The Name of City
+            //Displays The Name of City and Current Date
             CityAndDateWidget(currentLocationProvider: currentLocationProvider),
+            //Spacing
             const Spacer(flex: 1),
+            //Displays Current Weather Condition
             WeatherReport(),
+            //Spacing
             const Spacer(flex: 1),
+            //Button Widget that navigates to Search Screen
             ButtonWidget(
                 text: AppLocalizations.of(context).translate("search_for_a_city"),
                 textColor: AppTheme.colorBlackPurple,
                 backgroundColor: AppTheme.colorCreamyWhite,
                 onPressed: () => Routers.showSearchScreen(context)),
+            //Bottom Padding
             const SizedBox(
               height: AppTheme.defaultPadding,
             )
