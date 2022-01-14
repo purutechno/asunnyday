@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:asunnyday/model/city_response.dart';
+import 'package:asunnyday/model/single_city_response.dart';
 import 'package:asunnyday/view_model/api_helper/api_exceptions.dart';
 import 'package:asunnyday/view_model/api_helper/base_api_helpers.dart';
 import 'package:asunnyday/view_model/api_helper/base_apis.dart';
@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class CurrentLocationProvider extends ChangeNotifier {
   Position? position;
-  CityResponse? cityResponse;
+  SingleCityResponse? cityResponse;
 
   //This function gets the current Position of user
   Future<Position> getCurrentLocation() async {
@@ -27,7 +27,7 @@ class CurrentLocationProvider extends ChangeNotifier {
             BaseApis.cityByLatitudeAndLongitude(latitude: position?.latitude, longitude: position?.longitude));
         var rawResponse = await http.get(url);
         var apiResponse = BaseApiHelpers.returnResponse(rawResponse);
-        cityResponse = CityResponse.fromJson(apiResponse);
+        cityResponse = SingleCityResponse.fromJson(apiResponse);
       } on SocketException {
         //print('No Internet Connection');
         throw FetchDataException('No Internet connection');
