@@ -1,7 +1,10 @@
+import 'package:asunnyday/model/weather_response.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
+import 'package:asunnyday/view_model/home/current_weather_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WeatherReport extends StatelessWidget {
   WeatherReport({Key? key}) : super(key: key);
@@ -14,47 +17,57 @@ class WeatherReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _containerHeight = MediaQuery.of(context).size.width - (2 * AppTheme.defaultPadding);
-    return Container(
-      padding: _padding,
-      height: _containerHeight,
-      width: _containerHeight,
-      decoration: _boxDecoration,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(
-            Icons.cloud,
-            size: AppTheme.sizeRoundButtonIconLarge,
-            color: AppTheme.colorPurple,
+    return Consumer<CurrentWeatherProvider>(
+      builder: (cxt, currentWeatherProvider, child) {
+        return Container(
+          padding: _padding,
+          height: _containerHeight,
+          width: _containerHeight,
+          decoration: _boxDecoration,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.cloud,
+                size: AppTheme.sizeRoundButtonIconLarge,
+                color: AppTheme.colorPurple,
+              ),
+              _smallPadding,
+              //Shows Maximum Temperature
+              TextWidget(
+                  text:
+                      "${currentWeatherProvider.weatherResponse?.maxTemperature} ${AppLocalizations.of(context).translate("maximum_temperature")}",
+                  fontColor: AppTheme.colorBlackPurple,
+                  fontSize: AppTheme.fontSizeTTCommonsPro,
+                  fontWeight: AppTheme.fontWeight700),
+              _smallPadding,
+              //Shows Average Temperature
+              TextWidget(
+                  text:
+                      "${currentWeatherProvider.averageTemperature} ${AppLocalizations.of(context).translate("average_temperature")}",
+                  fontColor: AppTheme.colorBlackPurple,
+                  fontSize: AppTheme.fontSizeTTCommonsPro,
+                  fontWeight: AppTheme.fontWeight700),
+              _smallPadding,
+              //Shows Average Temperature
+              TextWidget(
+                  text:
+                      "${currentWeatherProvider.weatherResponse?.minTemperature} ${AppLocalizations.of(context).translate("minimum_temperature")}",
+                  fontColor: AppTheme.colorBlackPurple,
+                  fontSize: AppTheme.fontSizeTTCommonsPro,
+                  fontWeight: AppTheme.fontWeight700),
+              const SizedBox(height: AppTheme.defaultPadding),
+              const TextWidget(
+                  text: "Mostly Cloudy",
+                  fontColor: AppTheme.colorPurple,
+                  fontFamily: AppTheme.fontFamilyButler,
+                  fontSize: AppTheme.fontSizeButlerMedium,
+                  fontWeight: AppTheme.fontWeight700),
+            ],
           ),
-          _smallPadding,
-          TextWidget(
-              text: "${AppLocalizations.of(context).translate("minimum_temperature")} : 9C",
-              fontColor: AppTheme.colorBlackPurple,
-              fontSize: AppTheme.fontSizeTTCommonsPro,
-              fontWeight: AppTheme.fontWeight700),
-          _smallPadding,
-          TextWidget(
-              text: "${AppLocalizations.of(context).translate("maximum_temperature")} : 9C",
-              fontColor: AppTheme.colorBlackPurple,
-              fontSize: AppTheme.fontSizeTTCommonsPro,
-              fontWeight: AppTheme.fontWeight700),
-          _smallPadding,
-          TextWidget(
-              text: "${AppLocalizations.of(context).translate("average_temperature")} : 9C",
-              fontColor: AppTheme.colorBlackPurple,
-              fontSize: AppTheme.fontSizeTTCommonsPro,
-              fontWeight: AppTheme.fontWeight700),
-          const SizedBox(height: AppTheme.defaultPadding),
-          const TextWidget(
-              text: "Mostly Cloudy",
-              fontColor: AppTheme.colorPurple,
-              fontFamily: AppTheme.fontFamilyButler,
-              fontSize: AppTheme.fontSizeButlerMedium,
-              fontWeight: AppTheme.fontWeight700),
-        ],
-      ),
+        );
+      },
     );
   }
 }

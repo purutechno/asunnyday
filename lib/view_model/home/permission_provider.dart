@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
+import 'package:asunnyday/view_model/home/current_weather_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
@@ -51,6 +52,8 @@ class PermissionProvider extends ChangeNotifier {
         //Getting Current Location of the User
         await _currentLocationProvider.getCurrentLocation();
         await _currentLocationProvider.getCurrentCity();
+        //Getting Weather Condition of the Current Location
+        await Provider.of<CurrentWeatherProvider>(context, listen: false).getWeatherOfCity(context);
         Routers.showHomeScreen(context);
       } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
         //Displaying the Pop-up with instructions

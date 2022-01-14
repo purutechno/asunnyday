@@ -6,8 +6,8 @@
   "activate_permission_description": "Please give us permission to access your location so that we can display weather.\n Also make sure to ENABLE LOCATION SERVICE in your device.",
   "activate": "Sure!",
   "hell_no": "No Way!",
-  "minimum_temperature": "Minimum Temperature",
-  "maximum_temperature": "Maximum Temperature",
-  "average_temperature" : "Average Temperature"
+  "minimum_temperature": "Minimum",
+  "maximum_temperature": "Maximum",
+  "average_temperature" : "Average"
 
 }
