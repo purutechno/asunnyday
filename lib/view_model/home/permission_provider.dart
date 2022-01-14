@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -39,19 +40,28 @@ class PermissionProvider extends ChangeNotifier {
 
   //This function takes care of the routes and permission as a whole
   Future<void> initializePermissionAndNavigate(BuildContext context, {bool questionScreen = true}) async {
-    //Checking for Location Permission
-    await checkForLocationPermission(context, requestOnceMore: !questionScreen);
-    //Verifying that the location service is enabled
-    await checkForLocationService(context);
-    if (isPermissionGranted && isLocationServiceEnabled) {
-      //Getting Current Location of the User
-      await Provider.of<CurrentLocationProvider>(context, listen: false).getCurrentLocation();
-      Routers.showHomeScreen(context);
-    } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
-      //Displaying the Pop-up with instructions
-      Routers.showPermissionQuestionScreen(context);
+    final _currentLocationProvider = Provider.of<CurrentLocationProvider>(context, listen: false);
+    //Checking if the platform is Android or IOS
+    if (Platform.isAndroid || Platform.isIOS) {
+      //Checking for Location Permission
+      await checkForLocationPermission(context, requestOnceMore: !questionScreen);
+      //Verifying that the location service is enabled
+      await checkForLocationService(context);
+      if (isPermissionGranted && isLocationServiceEnabled) {
+        //Getting Current Location of the User
+        await _currentLocationProvider.getCurrentLocation();
+        await _currentLocationProvider.getCurrentCity();
+        Routers.showHomeScreen(context);
+      } else if (((isPermissionGranted == false) || (isLocationServiceEnabled == false)) && questionScreen) {
+        //Displaying the Pop-up with instructions
+        Routers.showPermissionQuestionScreen(context);
+      } else {
+        //Simply Navigate to Search Screen
+        denyPermissionAndNavigate(context);
+      }
     } else {
-      //Simply Navigate to Search Screen
+      // Web is not able to detect position for users due to error in it's null safe library - @Purushottam
+      //Navigating Directly to Search Screen
       denyPermissionAndNavigate(context);
     }
     //Terminate the function

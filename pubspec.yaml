@@ -46,6 +46,9 @@ dependencies:
   #getting location co-ordinates
   geolocator: ^8.0.3
 
+  #API Calls
+  http: ^0.13.4
+
 
 
 
