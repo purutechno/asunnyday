@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
   final String text;
-  final Color fontColor;
   final double fontSize;
   final String fontFamily;
   final FontWeight fontWeight;
@@ -14,7 +13,6 @@ class TextWidget extends StatelessWidget {
   const TextWidget(
      {Key? key,
     required this.text,
-    this.fontColor = AppTheme.colorBlack,
     this.fontSize = AppTheme.fontSizeTTCommonsPro,
     this.fontFamily = AppTheme.fontFamilyTTCommonsPro,
     this.fontWeight = FontWeight.normal,
@@ -29,7 +27,6 @@ class TextWidget extends StatelessWidget {
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontWeight: fontWeight,
-      color: fontColor,
     );
 
     return Text(

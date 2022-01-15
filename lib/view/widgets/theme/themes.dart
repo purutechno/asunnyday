@@ -35,7 +35,6 @@ class Themes extends StatelessWidget {
           child: Center(
             child: TextWidget(
               text: text,
-              fontColor: AppTheme.colorWhite,
               fontSize: AppTheme.fontSizeTTCommonsPro16,
               fontWeight: FontWeight.bold,
             ),
