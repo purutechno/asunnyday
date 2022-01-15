@@ -44,18 +44,21 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
         ),
         child: Stack(
           children: [
+            //The Toggler
             Themes(
                 margin: margin,
                 width: buttonWidth,
                 text: widget.falseText,
                 left: false,
                 toggleValue: () => _toggleValue()),
+            //The Toggler
             Themes(
                 margin: margin,
                 width: buttonWidth,
                 text: widget.trueText,
                 left: true,
                 toggleValue: () => _toggleValue()),
+            //Animated Shifter
             AnimatedPositioned(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeIn,
