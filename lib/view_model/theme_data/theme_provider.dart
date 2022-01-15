@@ -5,6 +5,10 @@ class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = false;
 
   //This gets the boxShadow for all the containers in the app
+
+  //Theme Switcher Color
+  Color get switcherColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+
   //Default Value is based on Default Theme
   BoxShadow get boxShadow => isPurpleTheme ? AppTheme.boxShadowWhite : AppTheme.boxShadowDefault;
 

@@ -1,8 +1,10 @@
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view/widgets/theme/themes.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ThemeSwitcher extends StatefulWidget {
   final String falseText;
@@ -35,61 +37,65 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
       final fullWidth = constraints.maxWidth;
       const margin = (AppTheme.sizeMediumButton - AppTheme.sizeSmallButton) / 2;
       final buttonWidth = (fullWidth / 2) - margin;
-      return Container(
-        height: AppTheme.sizeMediumButton,
-        width: fullWidth,
-        decoration: BoxDecoration(
-          color: AppTheme.colorPurple2,
-          borderRadius: BorderRadius.circular(AppTheme.sizeMediumButton / 2),
-        ),
-        child: Stack(
-          children: [
-            //The Toggler
-            Themes(
-                margin: margin,
-                width: buttonWidth,
-                text: widget.falseText,
-                left: false,
-                toggleValue: () => _toggleValue()),
-            //The Toggler
-            Themes(
-                margin: margin,
-                width: buttonWidth,
-                text: widget.trueText,
-                left: true,
-                toggleValue: () => _toggleValue()),
-            //Animated Shifter
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeIn,
-              top: margin,
-              left: toggleValue ? margin : margin + buttonWidth,
-              child: GestureDetector(
-                onTap: () => _toggleValue(),
-                child: Container(
+      return Consumer<ThemeProvider>(builder: (cxt, themeProvider, child) {
+        return Container(
+          height: AppTheme.sizeMediumButton,
+          width: fullWidth,
+          decoration: BoxDecoration(
+            color: themeProvider.containerColor,
+            borderRadius: BorderRadius.circular(AppTheme.sizeMediumButton / 2),
+          ),
+          child: Stack(
+            children: [
+              //The Toggler
+              Themes(
+                  margin: margin,
                   width: buttonWidth,
-                  height: AppTheme.sizeSmallButton,
-                  decoration: BoxDecoration(
-                    color: AppTheme.colorWhite,
-                    borderRadius: BorderRadius.circular(AppTheme.sizeSmallButton / 2),
-                  ),
-                  child: Center(
-                    child: TextWidget(
-                      text: toggleValue ? widget.trueText : widget.falseText,
-                      fontSize: AppTheme.fontSizeTTCommonsPro16,
-                      fontWeight: FontWeight.bold,
+                  text: widget.falseText,
+                  left: false,
+                  toggleValue: () => _toggleValue(themeProvider)),
+              //The Toggler
+              Themes(
+                  margin: margin,
+                  width: buttonWidth,
+                  text: widget.trueText,
+                  left: true,
+                  toggleValue: () => _toggleValue(themeProvider)),
+              //Animated Shifter
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeIn,
+                top: margin,
+                left: toggleValue ? margin : margin + buttonWidth,
+                child: GestureDetector(
+                  onTap: () => _toggleValue(themeProvider),
+                  child: Container(
+                    width: buttonWidth,
+                    height: AppTheme.sizeSmallButton,
+                    decoration: BoxDecoration(
+                      //color based on theme
+                      color: themeProvider.switcherColor,
+                      borderRadius: BorderRadius.circular(AppTheme.sizeSmallButton / 2),
+                    ),
+                    child: Center(
+                      child: TextWidget(
+                        text: toggleValue ? widget.trueText : widget.falseText,
+                        fontSize: AppTheme.fontSizeTTCommonsPro16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      );
+            ],
+          ),
+        );
+      });
     });
   }
 
-  void _toggleValue() {
+  void _toggleValue(ThemeProvider themeProvider) {
+    themeProvider.toggleTheme();
     setState(() => toggleValue = !toggleValue);
   }
 }
