@@ -52,7 +52,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                 text: AppLocalizations.of(context).translate('search_for_a_city'),
                 fontSize: AppTheme.fontSizeTTCommonsProSmall,
                 fontFamily: AppTheme.fontFamilyTTCommonsPro,
-                fontColor: AppTheme.colorGrey,
               ),
             ),
           //This Widget Generates Suggestions

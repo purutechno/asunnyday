@@ -71,9 +71,7 @@ class MyApp extends StatelessWidget {
             locale: appLanguageProvider.appLocale,
             debugShowCheckedModeBanner: false,
             title: 'asunnyday',
-            theme: ThemeProvider.lightTheme,
-            darkTheme: ThemeProvider.darkTheme,
-            themeMode: themeProvider.currentTheme,
+            theme: themeProvider.currentTheme,
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

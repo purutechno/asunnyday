@@ -18,7 +18,6 @@ class SuggestionWidget extends StatelessWidget {
         fontSize: textStyle.fontSize ?? AppTheme.fontSizeTTCommonsPro,
         fontFamily: textStyle.fontFamily ?? AppTheme.fontFamilyTTCommonsPro,
         fontWeight: AppTheme.fontWeight600,
-        fontColor: AppTheme.colorBlackPurple,
         maxLines: 1,
       ),
     );

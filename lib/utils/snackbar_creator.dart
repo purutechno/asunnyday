@@ -19,7 +19,6 @@ class SnackBarCreator {
                   text: message,
                   fontSize: AppTheme.fontSizeTTCommonsPro16,
                   fontWeight: AppTheme.fontWeight700,
-                  fontColor: AppTheme.colorWhite,
                 ),
               ),
               GestureDetector(

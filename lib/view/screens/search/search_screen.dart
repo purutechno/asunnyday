@@ -48,8 +48,6 @@ class SearchScreen extends StatelessWidget {
             ),
             floatingActionButton: ButtonWidget(
               text: AppLocalizations.of(context).translate("home_screen"),
-              backgroundColor: AppTheme.colorCreamyWhite,
-              textColor: AppTheme.colorBlackPurple,
               onPressed: () => Provider.of<SearchStateProvider>(context, listen: false).handleNoDataCase(cxt),
             ),
           ),

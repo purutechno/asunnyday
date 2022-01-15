@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class IconTextWidget extends StatelessWidget {
   final String text;
-  final Color textColor;
 
   //For Max Temperature
   final bool isMax;
@@ -18,7 +17,6 @@ class IconTextWidget extends StatelessWidget {
   const IconTextWidget(
       {Key? key,
       required this.text,
-      required this.textColor,
       this.isMax = false,
       this.isMin = false,
       this.isAverage = false})
@@ -31,7 +29,6 @@ class IconTextWidget extends StatelessWidget {
       children: [
         TextWidget(
             text: text,
-            fontColor: textColor,
             fontSize: AppTheme.fontSizeTTCommonsPro,
             fontWeight: AppTheme.fontWeight700),
 

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const Color colorBackground = Color(0xFFFDFCF7);
   static const Color colorBlack = Color(0xFF000000);
-  static const Color colorPink = Color(0xFFFF99AF);
   static const Color colorBlackPurple = Color(0xFF2A1D2C);
   static const Color colorPurple = Color(0xFF5F436E);
   static const Color colorPurple2 = Color(0xFF4B3159);
@@ -36,17 +35,13 @@ class AppTheme {
   static const Color colorGreen1 = Color(0xFF28806B);
   static const Color colorGreen2 = Color(0xFF3C4F51);
   static const Color colorDarkGreen = Color(0xFF2B4A43);
-  static const Color colorRed = Color(0xFFF06969);
   static const Color colorBrownBeige = Color(0xFFB7A99E);
   static const Color colorDarkYellow = Color(0xFFEED9C7);
   static const Color colorBrown = Color(0xFF9E7337);
 
   static const double disabledOpacity = 0.5;
 
-  static const double borderThickness = 2.00;
-
   static const String fontFamilyButler = 'Butler'; // Headings
-  static const double fontSizeButlerLarge = 40.0;
   static const double fontSizeButler = 30.0;
   static const double fontSizeButlerMedium = 24.0;
   static const String fontFamilyTTCommonsPro = 'TTCommonsPro'; // Inf
@@ -61,72 +56,45 @@ class AppTheme {
   static const FontWeight fontWeight400 = FontWeight.w400;
   static const FontWeight fontWeight600 = FontWeight.w600;
 
-  static BorderRadiusGeometry borderRadiusGeometry(double radius) => BorderRadius.circular(radius);
-
+  //boxShadow light mode
   static BoxShadow boxShadowDefault = BoxShadow(
     color: colorBlack.withOpacity(0.05),
     blurRadius: 24.0,
     offset: const Offset(0, 4.0),
   );
 
+
+  //boxShadow dark mode
   static BoxShadow boxShadowWhite = BoxShadow(
     color: colorWhite.withOpacity(0.05),
     blurRadius: 24.0,
     offset: const Offset(0, 4.0),
   );
 
-  //new Ones
-  static const Size kElevatedButtonMinimumSize = Size(80, 50);
-  static const TextStyle kGenericTextButtonTextStyle = TextStyle(
-    fontSize: fontSizeTTCommonsPro16,
-    fontWeight: fontWeight400,
-  );
 
-  static const TextStyle kGenericHeadline5 = TextStyle(
-    fontSize: fontSizeButlerMedium,
-    fontWeight: fontWeight600,
-  );
-
-  static const TextStyle kGenericSubtitle1 = TextStyle(
-    fontSize: fontSizeTTCommonsProSmall,
-    fontWeight: fontWeight400,
-  );
-
-
-  static TextStyle kDarkHeadline5 = kGenericHeadline5.copyWith(
-        color: AppTheme.colorPurple,
+  //text color for light theme
+  static const TextStyle textStylesLightTheme = TextStyle(
+        color: AppTheme.colorBlackPurple,
       );
 
-  static TextStyle kLightHeadline5 =  kGenericHeadline5.copyWith(
-        color: AppTheme.colorGreen,
+  //text color for dark Theme
+  static const TextStyle textStylesDarkTheme =  TextStyle(
+        color: AppTheme.colorCreamyWhite,
       );
 
-
-  static  TextStyle kDarkSubtitle1 = kGenericSubtitle1.copyWith(
-    color: AppTheme.colorPurple,
-  );
-
-  static TextStyle kLightSubtitle1 = kGenericSubtitle1.copyWith(
-    color: AppTheme.colorGreen,
-  );
 
   static const double borderRadiusDefault = 24.0;
   static const double borderRadiusSmall = 10.0;
 
   static const double sizeRoundButtonBase = 50;
-  static const double sizeRoundButtonBaseLarge = 179;
+  static const double sizeMediumButton = 48;
+  static const double sizeSmallButton = 40;
   static const double sizeRoundButtonIcon =25;
   static const double sizeRoundButtonIconLarge = 100;
 
   static const double sizeDefaultButton = 60;
-  static const double sizeMediumButton = 48;
-  static const double sizeSmallButton = 40;
   static const int maxTextLines = 400;
   static const double modalButtonStandardWidth = 273;
-
-  static const double baseMarginForTabs = 30;
-
-  static const double defaultElevation = 0.5;
 
   static const double defaultPadding = 24.0;
   static const double paddingSmall = 15.0;

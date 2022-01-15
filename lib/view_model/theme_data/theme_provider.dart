@@ -4,105 +4,84 @@ import 'package:flutter/material.dart';
 class ThemeProvider with ChangeNotifier {
   bool _isDarkTheme = true;
 
-  ThemeMode get currentTheme => _isDarkTheme ? ThemeMode.dark : ThemeMode.light;
+  //This gets the boxShadow for all the containers in the app
+  //Default Value is based on Default Theme
+  BoxShadow get boxShadow => _isDarkTheme ? AppTheme.boxShadowWhite : AppTheme.boxShadowDefault;
+
+  //This gets the color for all the containers in the app
+  //Default Value is based on Default Theme
+  Color get containerColor => _isDarkTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
+
+  //Gets the active theme
+  ThemeData get currentTheme => _isDarkTheme ? darkTheme : lightTheme;
 
   void toggleTheme() {
     _isDarkTheme = !_isDarkTheme;
     notifyListeners();
   }
 
+  //Dark Theme for the app
   static ThemeData get darkTheme {
-    return ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppTheme.colorBlackPurple,
-        appBarTheme: const AppBarTheme(
-          elevation: AppTheme.defaultElevation,
-          backgroundColor: AppTheme.colorPurple,
-          foregroundColor: AppTheme.colorPurple2,
-          iconTheme: IconThemeData(
-            color: AppTheme.colorPurple3,
-          ),
-        ),
-        fontFamily: AppTheme.fontFamilyTTCommonsPro,
-        textTheme: TextTheme(
-          headline5: AppTheme.kDarkHeadline5,
-          subtitle1: AppTheme.kDarkSubtitle1,
-        ),
-        inputDecorationTheme: const InputDecorationTheme(
-          fillColor: AppTheme.colorPurple4,
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                AppTheme.borderRadiusDefault,
-              ),
-            ),
-            backgroundColor: AppTheme.colorPurple5,
-            primary: AppTheme.colorPurple5,
-            textStyle: AppTheme.kGenericTextButtonTextStyle,
-          ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                AppTheme.borderRadiusDefault,
-              ),
-            ),
-            minimumSize: AppTheme.kElevatedButtonMinimumSize,
-          ),
-        ),
-        colorScheme: const ColorScheme.dark(
-          secondary: AppTheme.colorPurple4,
-        ));
-  }
+    //Text Style for dark Theme
+    const textStyleForDarkTheme = TextStyle(color: AppTheme.colorCreamyWhite);
 
-  static ThemeData get lightTheme {
-    return ThemeData(
-      brightness: Brightness.light,
-      scaffoldBackgroundColor: AppTheme.colorGreen,
-      appBarTheme: const AppBarTheme(
-        elevation: AppTheme.defaultElevation,
-        backgroundColor: AppTheme.colorGreen1,
-        foregroundColor: AppTheme.colorGreen2,
-        iconTheme: IconThemeData(
-          color: AppTheme.colorAccentGreen,
-        ),
-      ),
-      fontFamily: AppTheme.fontFamilyTTCommonsPro,
-      textTheme: TextTheme(
-        headline5: AppTheme.kLightHeadline5,
-        subtitle1: AppTheme.kLightSubtitle1,
-      ),
-      inputDecorationTheme: const InputDecorationTheme(
-        fillColor: AppTheme.colorDarkGreen,
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              AppTheme.borderRadiusDefault,
-            ),
-          ),
-          backgroundColor: AppTheme.colorGreen1,
-          primary: AppTheme.colorGreen2,
-          textStyle: AppTheme.kGenericTextButtonTextStyle,
-        ),
-      ),
-      colorScheme: const ColorScheme.light(
-        secondary: AppTheme.colorGreen,
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              AppTheme.borderRadiusDefault,
-            ),
-          ),
-          minimumSize: AppTheme.kElevatedButtonMinimumSize,
+    final darkTextTheme = const TextTheme(
+      bodyText2: textStyleForDarkTheme,
+    ).apply(displayColor: AppTheme.colorCreamyWhite,bodyColor: AppTheme.colorCreamyWhite);
+
+    //Text Button style i.e. ButtonWidget Style
+    final darkTextButtonThemeData = TextButtonThemeData(
+      style: TextButton.styleFrom(
+        //Text Alignment
+        alignment: Alignment.center,
+        //Button Background Color
+        backgroundColor: AppTheme.colorCreamyWhite,
+        //Text Horizontal Padding
+        padding: const EdgeInsets.symmetric(
+            //Text Horizontal Padding
+            horizontal: AppTheme.defaultPadding),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
         ),
       ),
     );
+
+    return ThemeData(
+        scaffoldBackgroundColor: AppTheme.colorBlackPurple,
+        textButtonTheme: darkTextButtonThemeData,
+        textTheme: darkTextTheme);
+  }
+
+  //Light Theme for the app
+  static ThemeData get lightTheme {
+    //Text Style for light Theme
+    const textStyleForLightTheme = TextStyle(color: AppTheme.colorBlackPurple);
+
+    const lightThemeTextStyles = TextTheme(
+        //Text Style for Button Text
+        button: textStyleForLightTheme,
+        //Text Style for all Text in the app for lightTheme
+        bodyText2: textStyleForLightTheme);
+
+    final lightTextButtonTheme = TextButtonThemeData(
+        style: TextButton.styleFrom(
+      //Text Alignment
+      alignment: Alignment.center,
+      //Button Background Color
+      backgroundColor: AppTheme.colorBlackPurple,
+      //Text Horizontal Padding
+      padding: const EdgeInsets.symmetric(
+          //Text Horizontal Padding
+          horizontal: AppTheme.defaultPadding),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
+      ),
+    ));
+
+    return ThemeData(
+        //For DarkTheme
+        scaffoldBackgroundColor: AppTheme.colorCreamyWhite,
+        textButtonTheme: lightTextButtonTheme,
+        textTheme: lightThemeTextStyles);
   }
 }

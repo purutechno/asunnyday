@@ -87,7 +87,6 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
                             text: AppLocalizations.of(context).translate('activate_permission_title'),
                             fontFamily: AppTheme.fontFamilyButler,
                             fontSize: AppTheme.fontSizeButler,
-                            fontColor: AppTheme.colorBlackPurple,
                             textAlign: TextAlign.center,
                           ),
                           _sizedBoxWithDefaultPadding,
@@ -96,7 +95,6 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
                             text: AppLocalizations.of(context).translate('activate_permission_description'),
                             fontFamily: AppTheme.fontFamilyTTCommonsPro,
                             fontSize: AppTheme.fontSizeTTCommonsPro,
-                            fontColor: AppTheme.colorBlackPurple,
                             maxLines: AppTheme.maxTextLines,
                             textAlign: TextAlign.center,
                           ),
@@ -104,8 +102,6 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
                           //Agree Button
                           ButtonWidget(
                             text: AppLocalizations.of(context).translate('activate'),
-                            textColor: AppTheme.colorWhite,
-                            backgroundColor: AppTheme.colorGreen,
                             width: AppTheme.modalButtonStandardWidth,
                             onPressed: () async {
                               if (!_closeInProgress) {
@@ -117,11 +113,8 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
                           //Deny Button
                           ButtonWidget(
                             text: AppLocalizations.of(context).translate('hell_no'),
-                            textColor: AppTheme.colorCreamyWhite,
-                            backgroundColor: AppTheme.colorPurple5,
                             width: AppTheme.modalButtonStandardWidth,
                             height: AppTheme.smallerButtonSize,
-                            noBackground: true,
                             onPressed: () async {
                               if (!_closeInProgress) {
                                 await _handleAnswer(context, false);
