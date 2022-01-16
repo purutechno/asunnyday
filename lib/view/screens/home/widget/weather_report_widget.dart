@@ -27,6 +27,16 @@ class WeatherReportWidget extends StatelessWidget {
     final _containerHeight = MediaQuery.of(context).size.width - (2 * AppTheme.defaultPadding);
     return Consumer2<ThemeProvider, CurrentWeatherProvider>(
       builder: (cxt, themeProvider, currentWeatherProvider, child) {
+        //Initializing Max Temperature for null case
+        final _maxTemperature = currentWeatherProvider.weatherResponse?.maxTemperature ?? 24;
+        //Initializing Min Temperature for null case
+        final _minTemperature = currentWeatherProvider.weatherResponse?.minTemperature ?? 14;
+        //Initializing Average Temperature for null case
+        final _averageTemperature = (_maxTemperature + _minTemperature) ~/ 2;
+        //Initializing WeatherExpectation for null case
+        final _weatherExpectation =
+            currentWeatherProvider.weatherResponse?.weatherExpectation ?? "Have a Great Day! 😁";
+
         return Container(
           padding: _padding,
           height: _containerHeight,
@@ -41,29 +51,26 @@ class WeatherReportWidget extends StatelessWidget {
               _smallPadding,
               //Shows Maximum Temperature
               IconTextWidget(
-                  text:
-                      "${currentWeatherProvider.weatherResponse?.maxTemperature}${AppLocalizations.of(context).translate("degree_celsius")}"
+                  text: "$_maxTemperature${AppLocalizations.of(context).translate("degree_celsius")}"
                       " ${AppLocalizations.of(context).translate("maximum_temperature")}",
                   isMax: true),
               _smallPadding,
               //Shows Average Temperature
               IconTextWidget(
-                  text:
-                      "${currentWeatherProvider.averageTemperature}${AppLocalizations.of(context).translate("degree_celsius")} "
+                  text: "$_averageTemperature${AppLocalizations.of(context).translate("degree_celsius")} "
                       "${AppLocalizations.of(context).translate("average_temperature")}",
                   isAverage: true),
               _smallPadding,
               //Shows Average Temperature
               IconTextWidget(
-                text:
-                    "${currentWeatherProvider.weatherResponse?.minTemperature}${AppLocalizations.of(context).translate("degree_celsius")} "
+                text: "$_minTemperature${AppLocalizations.of(context).translate("degree_celsius")} "
                     "${AppLocalizations.of(context).translate("minimum_temperature")}",
                 isMin: true,
               ),
               _smallPadding,
               //Shows the day's average weather condition in a statement
               TextWidget(
-                  text: "${currentWeatherProvider.weatherResponse?.weatherExpectation}",
+                  text: _weatherExpectation,
                   fontFamily: AppTheme.fontFamilyButler,
                   fontSize: AppTheme.fontSizeButlerMedium,
                   fontWeight: AppTheme.fontWeight700),
