@@ -6,6 +6,8 @@ import 'package:asunnyday/view_model/internationalization/app_language.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//This Screen displays a loading indicator and initializes the
+//required values and navigates based on those values.
 class InitScreen extends StatefulWidget {
   const InitScreen({Key? key}) : super(key: key);
 

@@ -50,6 +50,7 @@ class MultiCityProvider extends ChangeNotifier {
   //This Function gets the weather condition for selected city and navigates to Home Screen
   Future<void> getWeatherAndNavigate(BuildContext ctx,
       {required String? locationKey, required String? cityName}) async {
+    Routers.showLoadingScreen(ctx);
     //Directly assigning the cityResponse value when user clicks on suggestion in Search Screen
     Provider.of<CurrentLocationProvider>(ctx, listen: false).cityResponse = SingleCityResponse(locationKey, cityName);
     //Getting the weather of a city assigned to cityResponse above

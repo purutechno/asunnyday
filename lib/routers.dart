@@ -16,6 +16,9 @@ enum RouteAnimationType {
 //This class handles the navigation
 //It has animation property, replace = true [ Clears the nav stack ]
 class Routers {
+  static void showLoadingScreen(BuildContext ctx, {bool replace = false}) =>
+      _push(ctx, const HomeScreen(), replaceRoute: replace, animation: RouteAnimationType.fade);
+
   static void showSearchScreen(BuildContext ctx, {bool replace = false}) =>
       _push(ctx, const SearchScreen(), replaceRoute: replace, animation: RouteAnimationType.fade);
 

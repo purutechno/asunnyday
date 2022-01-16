@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:asunnyday/model/weather_response.dart';
+import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/utils/api_helper/api_exceptions.dart';
 import 'package:asunnyday/utils/api_helper/base_api_helpers.dart';
 import 'package:asunnyday/utils/api_helper/base_apis.dart';
+import 'package:asunnyday/utils/snackbar_creator.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
+import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -28,6 +31,8 @@ class CurrentWeatherProvider extends ChangeNotifier {
         //getting Average Temperature
         _getAverageTemperature();
       } on SocketException {
+        Routers.showSearchScreen(context);
+        SnackBarCreator.showSnackBar(context, AppLocalizations.of(context).translate("something_went_wrong"));
         //print('No Internet Connection');
         throw FetchDataException('No Internet connection');
       }
