@@ -20,11 +20,11 @@ class WeatherReportWidget extends StatelessWidget {
   }
 
   static const _padding = EdgeInsets.all(AppTheme.paddingSmall);
+  static const _maxLines = 4;
   final _smallPadding = const SizedBox(height: AppTheme.paddingSmall);
 
   @override
   Widget build(BuildContext context) {
-    final _containerHeight = MediaQuery.of(context).size.width - (2 * AppTheme.defaultPadding);
     return Consumer2<ThemeProvider, CurrentWeatherProvider>(
       builder: (cxt, themeProvider, currentWeatherProvider, child) {
         //Initializing Max Temperature for null case
@@ -39,8 +39,7 @@ class WeatherReportWidget extends StatelessWidget {
 
         return Container(
           padding: _padding,
-          height: _containerHeight,
-          width: _containerHeight,
+          margin: _padding,
           decoration: _boxDecoration(themeProvider),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -71,8 +70,9 @@ class WeatherReportWidget extends StatelessWidget {
               //Shows the day's average weather condition in a statement
               TextWidget(
                   text: _weatherExpectation,
-                  fontFamily: AppTheme.fontFamilyButler,
-                  fontSize: AppTheme.fontSizeButlerMedium,
+                  textAlign: TextAlign.center,
+                  fontFamily: AppTheme.fontFamilyTTCommonsPro,
+                  maxLines: _maxLines,
                   fontWeight: AppTheme.fontWeight700),
             ],
           ),

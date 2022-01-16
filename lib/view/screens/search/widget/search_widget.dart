@@ -116,7 +116,10 @@ class SearchWidgetConfig extends StatelessWidget {
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               hintText: AppLocalizations.of(context).translate('search_for_a_city'),
-              hintStyle: textStyle.copyWith(color: AppTheme.colorGrey, fontWeight: AppTheme.fontWeight400),
+              hintStyle: textStyle.copyWith(
+                  color: themeProvider.switcherColor,
+                  fontWeight: AppTheme.fontWeight600,
+                  fontFamily: AppTheme.fontFamilyButler),
             ),
           ),
           noItemsFoundBuilder: (ctx) => SuggestionWidget(

@@ -9,6 +9,8 @@ class WeatherIconWidget extends StatelessWidget {
 
   const WeatherIconWidget({Key? key, required this.themeProvider}) : super(key: key);
 
+  static const iconSize = 100.00;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherIconProvider>(
@@ -17,21 +19,21 @@ class WeatherIconWidget extends StatelessWidget {
         if (weatherReportIconProvider.requiredIcon == WeatherIcons.cool) {
           return Icon(
             Icons.ac_unit_rounded,
-            size: AppTheme.sizeRoundButtonIconLarge,
+            size: AppTheme.sizeRoundButtonBase,
             color: themeProvider.weatherIconColor,
           );
         }
         if (weatherReportIconProvider.requiredIcon == WeatherIcons.average) {
           return Icon(
             Icons.cloud,
-            size: AppTheme.sizeRoundButtonIconLarge,
+            size: iconSize,
             color: themeProvider.weatherIconColor,
           );
         }
         if (weatherReportIconProvider.requiredIcon == WeatherIcons.hot) {
           return Icon(
             Icons.wb_sunny,
-            size: AppTheme.sizeRoundButtonIconLarge,
+            size: iconSize,
             color: themeProvider.weatherIconColor,
           );
         }

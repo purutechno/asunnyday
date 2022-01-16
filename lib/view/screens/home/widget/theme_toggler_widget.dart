@@ -13,7 +13,7 @@ class ThemeTogglerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (cxt, themeProvider, child) {
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppTheme.defaultPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppTheme.paddingSmall),
         child: ThemeSwitcher(initialValue: initialValue),
       );
     });

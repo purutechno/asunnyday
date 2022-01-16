@@ -18,19 +18,19 @@ class HomeScreen extends StatelessWidget {
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
                 //Displays The Name of City and Current Date
                 CityAndDateWidget(),
                 //Spacing
-                const Spacer(flex: 1),
+                Spacer(flex: 1),
                 //This Widget simply changes the Theme
-                const ThemeTogglerWidget(initialValue: false),
+                ThemeTogglerWidget(initialValue: false),
                 //Spacing
-                const Spacer(flex: 1),
+                Spacer(flex: 1),
                 //Displays Current Weather Condition
-                const WeatherReportWidget(),
+                WeatherReportWidget(),
                 //Spacing
-                const Spacer(flex: 2),
+                Spacer(flex: 4),
               ],
             ),
             const BottomNavigationWidget()

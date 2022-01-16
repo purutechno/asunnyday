@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CityAndDateWidget extends StatelessWidget {
-  CityAndDateWidget({Key? key}) : super(key: key);
+  const CityAndDateWidget({Key? key}) : super(key: key);
 
   // BorderRadius for info container
   static const _borderRadius = BorderRadius.only(
@@ -18,9 +18,11 @@ class CityAndDateWidget extends StatelessWidget {
   // Padding for info container
   EdgeInsets _padding(double safeAreHeight) => EdgeInsets.only(
       bottom: AppTheme.defaultPadding,
-      left: AppTheme.defaultPadding,
-      right: AppTheme.defaultPadding,
+      left: AppTheme.paddingSmall,
+      right: AppTheme.paddingSmall,
       top: safeAreHeight);
+
+  static const _margin = EdgeInsets.symmetric(horizontal: AppTheme.paddingSmall);
 
   // Decoration for info container
   BoxDecoration _boxDecoration(ThemeProvider themeProvider) => BoxDecoration(
@@ -43,6 +45,7 @@ class CityAndDateWidget extends StatelessWidget {
           ),
           Container(
             padding: _padding(_safeAreaHeight),
+            margin: _margin,
             alignment: Alignment.bottomCenter,
             decoration: _boxDecoration(themeProvider),
             child: Column(

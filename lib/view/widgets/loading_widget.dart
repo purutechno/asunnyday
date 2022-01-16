@@ -1,24 +1,31 @@
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoadingWidget extends StatelessWidget {
-  LoadingWidget({Key? key}) : super(key: key);
+  const LoadingWidget({Key? key}) : super(key: key);
 
   static const _height = 100.00;
-  final BoxDecoration _boxDecoration =
-      BoxDecoration(color: AppTheme.colorCreamyWhite, shape: BoxShape.circle, boxShadow: [AppTheme.boxShadowWhite]);
+
+  BoxDecoration _boxDecoration(ThemeProvider themeProvider) =>
+      BoxDecoration(color: themeProvider.containerColor, shape: BoxShape.circle, boxShadow: [AppTheme.boxShadowWhite]);
   static const _padding = EdgeInsets.symmetric(vertical: AppTheme.defaultPadding, horizontal: AppTheme.paddingSmall);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          height: _height,
-          margin: _padding,
-          decoration: _boxDecoration,
-          child: const CircularProgressIndicator(),
-        ),
+      body: Consumer<ThemeProvider>(
+        builder: (cxt, themeProvider, child) {
+          return Center(
+            child: Container(
+              height: _height,
+              margin: _padding,
+              decoration: _boxDecoration(themeProvider),
+              child: const CircularProgressIndicator(),
+            ),
+          );
+        },
       ),
     );
   }

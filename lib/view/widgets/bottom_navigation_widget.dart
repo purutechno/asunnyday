@@ -23,7 +23,7 @@ class BottomNavigationWidget extends StatelessWidget {
         return Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: AppTheme.defaultPadding),
+            margin: const EdgeInsets.symmetric(horizontal: AppTheme.paddingSmall),
             alignment: Alignment.bottomCenter,
             height: AppTheme.sizeDefaultButton,
             decoration: _boxDecoration(themeProvider),
