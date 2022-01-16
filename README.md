@@ -13,8 +13,9 @@ weather based on users location or Searched City.
 #Screens
 It has the following screens:
 1) home_screen :- Displays weather based on users current location
+                  and displays weather for a searched city
+
 2) search_screen :- Allows users to search for a city
-3) weather_screen :- Displays weather for a searched city
 
 #Fonts
 It uses the following Fonts available in assets/fonts:
@@ -56,4 +57,10 @@ On Accepted :
 
 
 #App Flow for Web
-- This is still in progress however you'll land on Search Screen and it's responsive
+- Choose chrome as your deployment and run the app
+
+#App Flow for Web
+- The application navigates the user to search city screen
+- By default - Home page displays dummy weather data until a city is searched
+[ Note ** Progress regarding getting location co-ordinates in Web ]
+
