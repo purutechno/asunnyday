@@ -32,8 +32,6 @@ class CurrentLocationProvider extends ChangeNotifier {
         //print('No Internet Connection');
         throw FetchDataException('No Internet connection');
       }
-    } else {
-      //print("Either Latitude or Longitude is null");
     }
     return;
   }

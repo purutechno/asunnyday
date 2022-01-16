@@ -34,21 +34,28 @@ class BottomNavigationWidget extends StatelessWidget {
             decoration: _boxDecoration(themeProvider),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: _buttonPadding,
-                  child: ButtonWidget(
-                    toggle: currentScreen == CurrentScreen.home ? false : true,
-                    text: AppLocalizations.of(context).translate("home_screen"),
-                    onPressed: () => Routers.showHomeScreen(context, replace: true),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: _buttonPadding,
+                    child: ButtonWidget(
+                      toggle: currentScreen == CurrentScreen.home ? false : true,
+                      text: AppLocalizations.of(context).translate("home_screen"),
+                      onPressed: () => Routers.showHomeScreen(context, replace: true),
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: _buttonPadding,
-                  child: ButtonWidget(
-                    toggle: currentScreen == CurrentScreen.search ? false : true,
-                    text: AppLocalizations.of(context).translate("search_screen"),
-                    onPressed: () => Routers.showSearchScreen(context, replace: true),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: _buttonPadding,
+                    child: ButtonWidget(
+                      toggle: currentScreen == CurrentScreen.search ? false : true,
+                      text: AppLocalizations.of(context).translate("search_screen"),
+                      onPressed: () => Routers.showSearchScreen(context, replace: true),
+                    ),
                   ),
                 )
               ],
