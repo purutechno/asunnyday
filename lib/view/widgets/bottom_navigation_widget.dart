@@ -23,6 +23,7 @@ class BottomNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Listening to theme
     return Consumer<ThemeProvider>(
       builder: (cxt, themeProvider, child) {
         return Align(
@@ -36,24 +37,32 @@ class BottomNavigationWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                //Home Screen button
                 Expanded(
                   flex: 1,
                   child: Padding(
                     padding: _buttonPadding,
                     child: ButtonWidget(
+                      //Simply toggles the theme values based on current theme
                       toggle: currentScreen == CurrentScreen.home ? false : true,
+                      //Title
                       text: AppLocalizations.of(context).translate("home_screen"),
+                      //GO-To search screen
                       onPressed: () => Routers.showHomeScreen(context, replace: true),
                     ),
                   ),
                 ),
+                //Search Screen button
                 Expanded(
                   flex: 1,
                   child: Padding(
                     padding: _buttonPadding,
                     child: ButtonWidget(
+                      //Simply toggles the theme values based on current theme
                       toggle: currentScreen == CurrentScreen.search ? false : true,
+                      //Title
                       text: AppLocalizations.of(context).translate("search_screen"),
+                      //GO-To search screen
                       onPressed: () => Routers.showSearchScreen(context, replace: true),
                     ),
                   ),

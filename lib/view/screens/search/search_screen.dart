@@ -48,7 +48,9 @@ class SearchScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                //This Widget Switches between home and search screen
                 const BottomNavigationWidget(
+                  //This is the current Screen
                   currentScreen: CurrentScreen.search,
                 )
               ],

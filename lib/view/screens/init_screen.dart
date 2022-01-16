@@ -18,7 +18,7 @@ class _InitScreenState extends State<InitScreen> {
   void initState() {
     Provider.of<AppLanguageProvider>(context, listen: false).fetchLocale();
     //Takes care of location permission , location initialization and navigation
-/*    Provider.of<PermissionProvider>(context, listen: false).initializePermissionAndNavigate(context);*/
+    Provider.of<PermissionProvider>(context, listen: false).initializePermissionAndNavigate(context);
     super.initState();
   }
 
@@ -26,6 +26,6 @@ class _InitScreenState extends State<InitScreen> {
   Widget build(BuildContext context) {
     //This widget will keep spinning until all values
     //are obtained
-    return const HomeScreen();
+    return const LoadingWidget();
   }
 }
