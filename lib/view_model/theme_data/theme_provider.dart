@@ -17,7 +17,7 @@ class ThemeProvider with ChangeNotifier {
   Color get containerColor => isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
 
   //Gets the active theme
-  ThemeData get currentTheme => isPurpleTheme ? purpleTheme : creamyWhiteTheme;
+  ThemeMode get currentTheme => isPurpleTheme ? ThemeMode.dark : ThemeMode.light;
 
   void toggleTheme() {
     isPurpleTheme = !isPurpleTheme;
@@ -53,6 +53,7 @@ class ThemeProvider with ChangeNotifier {
     );
 
     return ThemeData(
+        brightness: Brightness.dark,
         scaffoldBackgroundColor: AppTheme.colorBlackPurple,
         textButtonTheme: darkTextButtonThemeData,
         textTheme: darkTextTheme);
@@ -84,7 +85,7 @@ class ThemeProvider with ChangeNotifier {
     ));
 
     return ThemeData(
-        //For DarkTheme
+        brightness: Brightness.light,
         scaffoldBackgroundColor: AppTheme.colorCreamyWhite,
         textButtonTheme: lightTextButtonTheme,
         textTheme: lightThemeTextStyles);
