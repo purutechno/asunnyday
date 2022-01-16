@@ -14,24 +14,29 @@ class HomeScreen extends StatelessWidget {
       //at Home Screen
       onWillPop: () async => false,
       child: Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              //Displays The Name of City and Current Date
-              CityAndDateWidget(),
-              //Spacing
-              const Spacer(flex: 1),
-              //This Widget simply changes the Theme
-              const ThemeTogglerWidget(initialValue: false),
-              //Spacing
-              const Spacer(flex: 1),
-              //Displays Current Weather Condition
-              const WeatherReportWidget(),
-              //Spacing
-              const Spacer(flex: 2),
-            ],
-          ),
-          floatingActionButton: const BottomNavigationWidget()),
+        body: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Displays The Name of City and Current Date
+                CityAndDateWidget(),
+                //Spacing
+                const Spacer(flex: 1),
+                //This Widget simply changes the Theme
+                const ThemeTogglerWidget(initialValue: false),
+                //Spacing
+                const Spacer(flex: 1),
+                //Displays Current Weather Condition
+                const WeatherReportWidget(),
+                //Spacing
+                const Spacer(flex: 2),
+              ],
+            ),
+            const BottomNavigationWidget()
+          ],
+        ),
+      ),
     );
   }
 }

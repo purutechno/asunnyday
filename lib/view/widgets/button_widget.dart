@@ -5,6 +5,10 @@ import 'package:provider/provider.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
+
+  //Switches to reciprocal colors
+  //to the current theme
+  final bool toggle;
   final double fontSize;
   final FontWeight fontWeight;
   final VoidCallback? onPressed;
@@ -19,6 +23,7 @@ class ButtonWidget extends StatelessWidget {
     this.fontWeight = FontWeight.w600,
     this.onPressed,
     this.width,
+    this.toggle = false,
     this.height = AppTheme.sizeDefaultButton,
     this.showLoadingIndicator = false,
   }) : super(key: key);
@@ -31,7 +36,7 @@ class ButtonWidget extends StatelessWidget {
       child: Consumer<ThemeProvider>(
         builder: (cxt, themeProvider, child) {
           return TextButton(
-            style: themeProvider.getButtonColor,
+            style: themeProvider.getButtonColor(toggle: toggle),
             onPressed: onPressed,
             child: showLoadingIndicator
                 ? SizedBox(
@@ -43,15 +48,9 @@ class ButtonWidget extends StatelessWidget {
                   )
                 : Container(
                     padding: const EdgeInsets.symmetric(horizontal: AppTheme.defaultPadding),
-                    child: Consumer<ThemeProvider>(
-                      builder: (cxt, themeProvider, child) {
-                        //This Widget is an exception :- Text Widget doesn't support
-                        //color change for Buttons
-                        return Text(
-                          text,
-                          style: _giveTextStyles(themeProvider),
-                        );
-                      },
+                    child: Text(
+                      text,
+                      style: _giveTextStyles(themeProvider),
                     )),
           );
         },
@@ -63,5 +62,5 @@ class ButtonWidget extends StatelessWidget {
       fontSize: fontSize,
       fontFamily: AppTheme.fontFamilyButler,
       fontWeight: fontWeight,
-      color: themeProvider.buttonTextColor);
+      color: themeProvider.buttonTextColor(toggle: toggle));
 }

@@ -25,28 +25,32 @@ class SearchScreen extends StatelessWidget {
           //This will disable keyboard when pressed outside of the search Field
           onTap: () => searchStateProvider.searchNode.unfocus(),
           child: Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            body: Stack(
               children: [
-                SizedBox(height: _safeAreaHeight),
-                //Search Widget
-                Padding(
-                  padding: _padding,
-                  //This Widget is used for searching for cities
-                  //based on users' query
-                  child: SearchWidget(
-                      searchController: searchStateProvider.searchController,
-                      focusNode: searchStateProvider.searchNode,
-                      onCitySelected: () {
-                        searchStateProvider.searchNode.unfocus();
-                        SnackBarCreator.showSnackBar(context, AppLocalizations.of(context).translate("please_wait"),
-                            millisecond: 200);
-                      }),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: _safeAreaHeight),
+                    //Search Widget
+                    Padding(
+                      padding: _padding,
+                      //This Widget is used for searching for cities
+                      //based on users' query
+                      child: SearchWidget(
+                          searchController: searchStateProvider.searchController,
+                          focusNode: searchStateProvider.searchNode,
+                          onCitySelected: () {
+                            searchStateProvider.searchNode.unfocus();
+                            SnackBarCreator.showSnackBar(context, AppLocalizations.of(context).translate("please_wait"),
+                                millisecond: 200);
+                          }),
+                    ),
+                  ],
                 ),
+                const BottomNavigationWidget()
               ],
             ),
-            floatingActionButton: const BottomNavigationWidget(),
           ),
         );
       }),

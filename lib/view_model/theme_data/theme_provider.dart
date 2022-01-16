@@ -5,12 +5,37 @@ class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = false;
 
   //Theme data for Text Button :- Button widget
-  ButtonStyle get getButtonColor => isPurpleTheme ? lightTextButtonStyles : darkTextButtonStyles;
+  ButtonStyle getButtonColor({bool toggle = false}) {
+    if (isPurpleTheme) {
+      if (toggle) {
+        return darkTextButtonStyles;
+      }
+      return lightTextButtonStyles;
+    } else {
+      if (toggle) {
+        return lightTextButtonStyles;
+      }
+
+      return darkTextButtonStyles;
+    }
+  }
 
   Color get weatherIconColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //Button Text Color :- Button Widget
-  Color get buttonTextColor => isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
+  Color buttonTextColor({bool toggle = false}) {
+    if (isPurpleTheme) {
+      if (toggle) {
+        return AppTheme.colorBlackPurple;
+      }
+      return AppTheme.colorCreamyWhite;
+    } else {
+      if (toggle) {
+        return AppTheme.colorCreamyWhite;
+      }
+      return AppTheme.colorBlackPurple;
+    }
+  }
 
   //The text inside the search field color
   Color get searchFieldColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
