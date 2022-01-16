@@ -1,5 +1,5 @@
 import 'package:asunnyday/routers.dart';
-import 'package:asunnyday/view/screens/home/widget/theme_toggler.dart';
+import 'package:asunnyday/view/screens/home/widget/theme_toggler_widget.dart';
 import 'package:asunnyday/view/widgets/button_widget.dart';
 import 'package:asunnyday/view/screens/home/widget/city_and_date_widget.dart';
 import 'package:asunnyday/view/screens/home/widget/weather_report_widget.dart';
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           //Spacing
           const Spacer(flex: 1),
           //This Widget simply changes the Theme
-          const ThemeToggler(initialValue: false),
+          const ThemeTogglerWidget(initialValue: false),
           //Spacing
           const Spacer(flex: 1),
           //Displays Current Weather Condition

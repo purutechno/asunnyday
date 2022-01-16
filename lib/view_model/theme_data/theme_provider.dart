@@ -5,9 +5,10 @@ class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = false;
 
 
+  Color get weatherIconColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+
   //Button Text Color :- Button Widget
   Color get buttonTextColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
-
 
   //The text inside the search field color
   Color get searchFieldColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;

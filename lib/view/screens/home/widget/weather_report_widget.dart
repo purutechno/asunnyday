@@ -1,4 +1,5 @@
 import 'package:asunnyday/view/screens/home/widget/icon_text_widget.dart';
+import 'package:asunnyday/view/screens/home/widget/weather_icon_widget.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:asunnyday/view_model/weather/current_weather_provider.dart';
@@ -12,7 +13,10 @@ class WeatherReportWidget extends StatelessWidget {
 
   BoxDecoration _boxDecoration(ThemeProvider themeProvider) {
     return BoxDecoration(
-        shape: BoxShape.circle, color: themeProvider.containerColor, boxShadow: [themeProvider.boxShadow]);
+        shape: BoxShape.rectangle,
+        color: themeProvider.containerColor,
+        boxShadow: [themeProvider.boxShadow],
+        borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault));
   }
 
   static const _padding = EdgeInsets.all(AppTheme.paddingSmall);
@@ -32,11 +36,8 @@ class WeatherReportWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //TODO: Make the icon change based on weather condition
-              const Icon(
-                Icons.cloud,
-                size: AppTheme.sizeRoundButtonIconLarge,
-              ),
+              //Displays Weather Icon Based on current weather condition
+              WeatherIconWidget(themeProvider: themeProvider),
               _smallPadding,
               //Shows Maximum Temperature
               IconTextWidget(

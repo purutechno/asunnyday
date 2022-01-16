@@ -4,10 +4,10 @@ import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ThemeToggler extends StatelessWidget {
+class ThemeTogglerWidget extends StatelessWidget {
   final bool initialValue;
 
-  const ThemeToggler({Key? key, required this.initialValue}) : super(key: key);
+  const ThemeTogglerWidget({Key? key, required this.initialValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

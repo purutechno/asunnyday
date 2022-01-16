@@ -1,6 +1,7 @@
 import 'package:asunnyday/utils/constants.dart';
 import 'package:asunnyday/view/screens/init_screen.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
+import 'package:asunnyday/view_model/home/weather_icon_provider.dart';
 import 'package:asunnyday/view_model/weather/current_weather_provider.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
@@ -63,6 +64,8 @@ class MyApp extends StatelessWidget {
         //using the accuweather API
         //For more info, visit :- https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/autocomplete
         ChangeNotifierProvider(create: (_) => MultiCityProvider()),
+
+        ChangeNotifierProvider(create: (_) => WeatherIconProvider()),
       ],
       //Consumer listens to Theme and Language changes
       child: Consumer2<ThemeProvider, AppLanguageProvider>(
