@@ -3,6 +3,7 @@ import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/search/multi_city_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:provider/provider.dart';
@@ -32,61 +33,65 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     final showHint = widget.searchController.text.isEmpty;
-
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppTheme.defaultPadding,
-        vertical: showHint ? 8.0 : 0.0,
-      ),
-      decoration: BoxDecoration(
-        color: AppTheme.colorWhite,
-        borderRadius: BorderRadius.circular(AppTheme.borderRadiusSmall),
-      ),
-      child: Stack(
-        children: [
-          //Shows Hint when text is Empty
-          if (!showHint)
+    return Consumer<ThemeProvider>(builder: (cxt, themeProvider, child) {
+      return Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppTheme.defaultPadding,
+          vertical: showHint ? 8.0 : 0.0,
+        ),
+        decoration: BoxDecoration(
+          color: themeProvider.containerColor,
+          borderRadius: BorderRadius.circular(AppTheme.borderRadiusSmall),
+        ),
+        child: Stack(
+          children: [
+            //Shows Hint when text is Empty
+            if (!showHint)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: TextWidget(
+                  text: AppLocalizations.of(context).translate('search_for_a_city'),
+                  fontSize: AppTheme.fontSizeTTCommonsProSmall,
+                  fontFamily: AppTheme.fontFamilyTTCommonsPro,
+                ),
+              ),
+            //This Widget Generates Suggestions
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: TextWidget(
-                text: AppLocalizations.of(context).translate('search_for_a_city'),
-                fontSize: AppTheme.fontSizeTTCommonsProSmall,
-                fontFamily: AppTheme.fontFamilyTTCommonsPro,
+              padding: EdgeInsets.only(top: showHint ? 0.0 : AppTheme.paddingSmall),
+              child: SearchWidgetConfig(
+                focusNode: widget.focusNode,
+                searchController: widget.searchController,
+                textStyle: _textStyle,
+                onSelected: () {
+                  widget.onCitySelected();
+                  setState(() {});
+                },
+                themeProvider: themeProvider,
               ),
             ),
-          //This Widget Generates Suggestions
-          Padding(
-            padding: EdgeInsets.only(top: showHint ? 0.0 : AppTheme.paddingSmall),
-            child: SearchWidgetConfig(
-              focusNode: widget.focusNode,
-              searchController: widget.searchController,
-              textStyle: _textStyle,
-              onSelected: () {
-                widget.onCitySelected();
-                setState(() {});
-              },
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
 
 //This Widget generates suggestions for cities
 class SearchWidgetConfig extends StatelessWidget {
+  final ThemeProvider themeProvider;
   final FocusNode focusNode;
   final TextEditingController searchController;
   final TextStyle textStyle;
   final VoidCallback onSelected;
 
-  const SearchWidgetConfig({
-    Key? key,
-    required this.focusNode,
-    required this.searchController,
-    required this.textStyle,
-    required this.onSelected,
-  }) : super(key: key);
+  const SearchWidgetConfig(
+      {Key? key,
+      required this.focusNode,
+      required this.searchController,
+      required this.textStyle,
+      required this.onSelected,
+      required this.themeProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,13 +100,13 @@ class SearchWidgetConfig extends StatelessWidget {
     return Consumer<MultiCityProvider>(
       builder: (cxt, multiCityProvider, child) {
         return TypeAheadFormField(
-          //TODO: Get City Suggestion
+          //Getting response based on query
           suggestionsCallback: (query) => getSuggestions(query, multiCityProvider),
           textFieldConfiguration: TextFieldConfiguration(
             focusNode: focusNode,
             controller: searchController,
             textCapitalization: TextCapitalization.sentences,
-            style: textStyle.copyWith(fontWeight: AppTheme.fontWeight600),
+            style: textStyle.copyWith(fontWeight: AppTheme.fontWeight600, color: themeProvider.searchFieldColor),
             onSubmitted: (_) => onSelected(),
             //Decoration for the search config widget
             decoration: InputDecoration(
@@ -115,11 +120,13 @@ class SearchWidgetConfig extends StatelessWidget {
             ),
           ),
           noItemsFoundBuilder: (ctx) => SuggestionWidget(
+            themeProvider: themeProvider,
             textStyle: textStyle,
             text: AppLocalizations.of(ctx).translate('no_city_found'),
           ),
           //Builds The suggestions in Real Time when user enters some alphabets
-          itemBuilder: (ctx, String suggestion) => SuggestionWidget(textStyle: textStyle, text: suggestion),
+          itemBuilder: (ctx, String suggestion) =>
+              SuggestionWidget(themeProvider: themeProvider, textStyle: textStyle, text: suggestion),
           transitionBuilder: (ctx, suggestionsBox, ctrl) => suggestionsBox,
           //This method is triggered when a suggestion is clicked
           onSuggestionSelected: (String suggestion) async {

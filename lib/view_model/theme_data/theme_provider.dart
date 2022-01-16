@@ -4,11 +4,18 @@ import 'package:flutter/material.dart';
 class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = false;
 
-  //This gets the boxShadow for all the containers in the app
+
+  //Button Text Color :- Button Widget
+  Color get buttonTextColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+
+
+  //The text inside the search field color
+  Color get searchFieldColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //Theme Switcher Color
   Color get switcherColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
+  //This gets the boxShadow for all the containers in the app
   //Default Value is based on Default Theme
   BoxShadow get boxShadow => isPurpleTheme ? AppTheme.boxShadowWhite : AppTheme.boxShadowDefault;
 
