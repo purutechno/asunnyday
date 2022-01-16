@@ -1,4 +1,5 @@
 import 'package:asunnyday/view/screens/home/home_screen.dart';
+import 'package:asunnyday/view/screens/permission_question_screen.dart';
 import 'package:asunnyday/view/widgets/loading_widget.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
@@ -25,6 +26,6 @@ class _InitScreenState extends State<InitScreen> {
   Widget build(BuildContext context) {
     //This widget will keep spinning until all values
     //are obtained
-    return HomeScreen();
+    return PermissionQuestionScreen();
   }
 }

@@ -75,10 +75,10 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'asunnyday',
             //light theme
-            theme: ThemeProvider.creamyWhiteTheme,
+            theme: themeProvider.creamyWhiteTheme,
             //dark theme
             themeMode: themeProvider.currentTheme,
-            darkTheme: ThemeProvider.purpleTheme,
+            darkTheme: themeProvider.purpleTheme,
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

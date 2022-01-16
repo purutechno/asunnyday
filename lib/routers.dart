@@ -17,10 +17,10 @@ enum RouteAnimationType {
 //It has animation property, replace = true [ Clears the nav stack ]
 class Routers {
   static void showSearchScreen(BuildContext ctx, {bool replace = false}) =>
-      _push(ctx, const SearchScreen(), replaceRoute: replace, animation: RouteAnimationType.horizontal);
+      _push(ctx, const SearchScreen(), replaceRoute: replace, animation: RouteAnimationType.fade);
 
   static void showHomeScreen(BuildContext ctx, {bool replace = false}) =>
-      _push(ctx, const HomeScreen(), replaceRoute: replace, animation: RouteAnimationType.horizontal);
+      _push(ctx, const HomeScreen(), replaceRoute: replace, animation: RouteAnimationType.fade);
 
   static void showPermissionQuestionScreen(BuildContext ctx, {bool replace = false}) =>
       _push(ctx, const PermissionQuestionScreen(), replaceRoute: replace, animation: RouteAnimationType.vertical);

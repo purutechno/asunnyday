@@ -1,8 +1,10 @@
 import 'package:asunnyday/view/widgets/button_widget.dart';
+import 'package:asunnyday/view/widgets/quit_button.dart';
 import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,87 +48,82 @@ class _PermissionQuestionScreenState extends State<PermissionQuestionScreen> {
               duration: _duration,
               scale: _scale,
               curve: _curve,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppTheme.colorWhite,
-                  borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
-                ),
-                child: Stack(
-                  children: [
-                    //Close Button
-                    Positioned(
-                      top: 5.0,
-                      right: 5.0,
-                      child: GestureDetector(
-                        onTap: () async {
-                          if (!_closeInProgress) {
-                            await _handleAnswer(context, false);
-                          }
-                        },
-                        behavior: HitTestBehavior.translucent,
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: AppTheme.sizeRoundButtonBase,
-                          width: AppTheme.sizeRoundButtonBase,
-                          child: const Icon(
-                            Icons.close,
-                            size: AppTheme.sizeRoundButtonIcon,
-                          ),
-                        ),
-                      ),
+              child: Consumer<ThemeProvider>(
+                builder: (cxt, themeProvider, child) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: themeProvider.containerColor,
+                      borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
                     ),
-                    //body
-                    Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(AppTheme.defaultPadding),
-                      child: Column(
-                        children: [
-                          _sizedBoxWithDefaultPadding,
-                          //For Title
-                          TextWidget(
-                            text: AppLocalizations.of(context).translate('activate_permission_title'),
-                            fontFamily: AppTheme.fontFamilyButler,
-                            fontSize: AppTheme.fontSizeButler,
-                            textAlign: TextAlign.center,
-                          ),
-                          _sizedBoxWithDefaultPadding,
-                          //For Description
-                          TextWidget(
-                            text: AppLocalizations.of(context).translate('activate_permission_description'),
-                            fontFamily: AppTheme.fontFamilyTTCommonsPro,
-                            fontSize: AppTheme.fontSizeTTCommonsPro,
-                            maxLines: AppTheme.maxTextLines,
-                            textAlign: TextAlign.center,
-                          ),
-                          _sizedBoxWithDefaultPadding,
-                          //Agree Button
-                          ButtonWidget(
-                            text: AppLocalizations.of(context).translate('activate'),
-                            width: AppTheme.modalButtonStandardWidth,
-                            onPressed: () async {
-                              if (!_closeInProgress) {
-                                await _handleAnswer(context, true);
-                              }
-                            },
-                          ),
-                          _sizedBoxWithDefaultPadding,
-                          //Deny Button
-                          ButtonWidget(
-                            text: AppLocalizations.of(context).translate('hell_no'),
-                            width: AppTheme.modalButtonStandardWidth,
-                            height: AppTheme.smallerButtonSize,
-                            onPressed: () async {
+                    child: Stack(
+                      children: [
+                        //Close Button
+                        Positioned(
+                          top: 10.0,
+                          right: 10.0,
+                          child: QuitButton(
+                            onTapped: () async {
                               if (!_closeInProgress) {
                                 await _handleAnswer(context, false);
                               }
                             },
-                            showLoadingIndicator: _closeInProgress,
+                            themeProvider: themeProvider,
                           ),
-                        ],
-                      ),
+                        ),
+                        //body
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(AppTheme.defaultPadding),
+                          child: Column(
+                            children: [
+                              _sizedBoxWithDefaultPadding,
+                              //For Title
+                              TextWidget(
+                                text: AppLocalizations.of(context).translate('activate_permission_title'),
+                                fontFamily: AppTheme.fontFamilyButler,
+                                fontSize: AppTheme.fontSizeButler,
+                                textAlign: TextAlign.center,
+                                maxLines: AppTheme.maxTextLines,
+                              ),
+                              _sizedBoxWithDefaultPadding,
+                              //For Description
+                              TextWidget(
+                                text: AppLocalizations.of(context).translate('activate_permission_description'),
+                                fontFamily: AppTheme.fontFamilyButler,
+                                fontSize: AppTheme.fontSizeTTCommonsPro,
+                                maxLines: AppTheme.maxTextLines,
+                                textAlign: TextAlign.center,
+                              ),
+                              _sizedBoxWithDefaultPadding,
+                              //Agree Button
+                              ButtonWidget(
+                                text: AppLocalizations.of(context).translate('activate'),
+                                width: AppTheme.modalButtonStandardWidth,
+                                onPressed: () async {
+                                  if (!_closeInProgress) {
+                                    await _handleAnswer(context, true);
+                                  }
+                                },
+                              ),
+                              _sizedBoxWithDefaultPadding,
+                              //Deny Button
+                              ButtonWidget(
+                                text: AppLocalizations.of(context).translate('hell_no'),
+                                width: AppTheme.modalButtonStandardWidth,
+                                onPressed: () async {
+                                  if (!_closeInProgress) {
+                                    await _handleAnswer(context, false);
+                                  }
+                                },
+                                showLoadingIndicator: _closeInProgress,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
           ),

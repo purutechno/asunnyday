@@ -1,6 +1,6 @@
 import 'package:asunnyday/utils/snackbar_creator.dart';
 import 'package:asunnyday/view/screens/search/widget/search_widget.dart';
-import 'package:asunnyday/view/widgets/button_widget.dart';
+import 'package:asunnyday/view/widgets/bottom_navigation_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
 import 'package:asunnyday/view_model/search/search_state_provider.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
@@ -46,10 +46,7 @@ class SearchScreen extends StatelessWidget {
                 ),
               ],
             ),
-            floatingActionButton: ButtonWidget(
-              text: AppLocalizations.of(context).translate("home_screen"),
-              onPressed: () => Provider.of<SearchStateProvider>(context, listen: false).handleNoDataCase(cxt),
-            ),
+            floatingActionButton: const BottomNavigationWidget(),
           ),
         );
       }),

@@ -15,7 +15,7 @@ class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     Key? key,
     required this.text,
-    this.fontSize = AppTheme.fontSizeTTCommonsProMedium,
+    this.fontSize = AppTheme.fontSizeButlerMedium,
     this.fontWeight = FontWeight.w600,
     this.onPressed,
     this.width,
@@ -28,32 +28,40 @@ class ButtonWidget extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: TextButton(
-        onPressed: onPressed,
-        child: showLoadingIndicator
-            ? SizedBox(
-                width: fontSize,
-                height: fontSize,
-                child: const CircularProgressIndicator(
-                  strokeWidth: 2.0,
-                ),
-              )
-            : Container(
-                padding: const EdgeInsets.symmetric(horizontal: AppTheme.defaultPadding),
-                child: Consumer<ThemeProvider>(
-                  builder: (cxt, themeProvider, child) {
-                    //This Widget is an exception :- Text Widget doesn't support
-                    //color change for Buttons
-                    return Text(
-                      text,
-                      style: _giveTextStyles(themeProvider),
-                    );
-                  },
-                )),
+      child: Consumer<ThemeProvider>(
+        builder: (cxt, themeProvider, child) {
+          return TextButton(
+            style: themeProvider.getButtonColor,
+            onPressed: onPressed,
+            child: showLoadingIndicator
+                ? SizedBox(
+                    width: fontSize,
+                    height: fontSize,
+                    child: const CircularProgressIndicator(
+                      strokeWidth: 2.0,
+                    ),
+                  )
+                : Container(
+                    padding: const EdgeInsets.symmetric(horizontal: AppTheme.defaultPadding),
+                    child: Consumer<ThemeProvider>(
+                      builder: (cxt, themeProvider, child) {
+                        //This Widget is an exception :- Text Widget doesn't support
+                        //color change for Buttons
+                        return Text(
+                          text,
+                          style: _giveTextStyles(themeProvider),
+                        );
+                      },
+                    )),
+          );
+        },
       ),
     );
   }
 
-  TextStyle _giveTextStyles(ThemeProvider themeProvider) =>
-      TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: themeProvider.buttonTextColor);
+  TextStyle _giveTextStyles(ThemeProvider themeProvider) => TextStyle(
+      fontSize: fontSize,
+      fontFamily: AppTheme.fontFamilyButler,
+      fontWeight: fontWeight,
+      color: themeProvider.buttonTextColor);
 }

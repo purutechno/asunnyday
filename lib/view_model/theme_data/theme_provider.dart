@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = false;
 
+  //Theme data for Text Button :- Button widget
+  ButtonStyle get getButtonColor => isPurpleTheme ? lightTextButtonStyles : darkTextButtonStyles;
 
   Color get weatherIconColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //Button Text Color :- Button Widget
-  Color get buttonTextColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+  Color get buttonTextColor => isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
 
   //The text inside the search field color
   Color get searchFieldColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
@@ -33,7 +35,26 @@ class ThemeProvider with ChangeNotifier {
   }
 
   //Dark Theme for the app
-  static ThemeData get purpleTheme {
+  ButtonStyle darkTextButtonStyles = TextButton.styleFrom(
+    //Text Alignment
+    alignment: Alignment.center,
+    //Button Background Color
+    backgroundColor: AppTheme.colorCreamyWhite,
+    //Text Horizontal Padding
+    padding: const EdgeInsets.symmetric(
+        //Text Horizontal Padding
+        horizontal: AppTheme.defaultPadding),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
+    ),
+  );
+
+  //Text Button style i.e. ButtonWidget Style
+  TextButtonThemeData darkTextButtonThemeData() => TextButtonThemeData(
+        style: darkTextButtonStyles,
+      );
+
+  ThemeData get purpleTheme {
     //Text Style for dark Theme
     const textStyleForDarkTheme = TextStyle(color: AppTheme.colorBlackPurple);
 
@@ -43,32 +64,31 @@ class ThemeProvider with ChangeNotifier {
       bodyText2: textStyleForDarkTheme,
     ).apply(displayColor: AppTheme.colorBlackPurple, bodyColor: AppTheme.colorBlackPurple);
 
-    //Text Button style i.e. ButtonWidget Style
-    final darkTextButtonThemeData = TextButtonThemeData(
-      style: TextButton.styleFrom(
-        //Text Alignment
-        alignment: Alignment.center,
-        //Button Background Color
-        backgroundColor: AppTheme.colorCreamyWhite,
-        //Text Horizontal Padding
-        padding: const EdgeInsets.symmetric(
-            //Text Horizontal Padding
-            horizontal: AppTheme.defaultPadding),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
-        ),
-      ),
-    );
-
     return ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: AppTheme.colorBlackPurple,
-        textButtonTheme: darkTextButtonThemeData,
+        textButtonTheme: darkTextButtonThemeData(),
         textTheme: darkTextTheme);
   }
 
   //Light Theme for the app
-  static ThemeData get creamyWhiteTheme {
+  final lightTextButtonStyles = TextButton.styleFrom(
+    //Text Alignment
+    alignment: Alignment.center,
+    //Button Background Color
+    backgroundColor: AppTheme.colorBlackPurple,
+    //Text Horizontal Padding
+    padding: const EdgeInsets.symmetric(
+        //Text Horizontal Padding
+        horizontal: AppTheme.defaultPadding),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
+    ),
+  );
+
+  TextButtonThemeData lightTextButtonTheme() => TextButtonThemeData(style: lightTextButtonStyles);
+
+  ThemeData get creamyWhiteTheme {
     //Text Style for light Theme
     const textStyleForLightTheme = TextStyle(color: AppTheme.colorCreamyWhite);
 
@@ -77,25 +97,10 @@ class ThemeProvider with ChangeNotifier {
     final lightThemeTextStyles = const TextTheme(button: textStyleForLightTheme, bodyText2: textStyleForLightTheme)
         .apply(displayColor: AppTheme.colorCreamyWhite, bodyColor: AppTheme.colorCreamyWhite);
 
-    final lightTextButtonTheme = TextButtonThemeData(
-        style: TextButton.styleFrom(
-      //Text Alignment
-      alignment: Alignment.center,
-      //Button Background Color
-      backgroundColor: AppTheme.colorBlackPurple,
-      //Text Horizontal Padding
-      padding: const EdgeInsets.symmetric(
-          //Text Horizontal Padding
-          horizontal: AppTheme.defaultPadding),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
-      ),
-    ));
-
     return ThemeData(
         brightness: Brightness.light,
         scaffoldBackgroundColor: AppTheme.colorCreamyWhite,
-        textButtonTheme: lightTextButtonTheme,
+        textButtonTheme: lightTextButtonTheme(),
         textTheme: lightThemeTextStyles);
   }
 }
