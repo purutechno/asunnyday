@@ -48,7 +48,9 @@ class SearchScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const BottomNavigationWidget()
+                const BottomNavigationWidget(
+                  currentScreen: CurrentScreen.search,
+                )
               ],
             ),
           ),

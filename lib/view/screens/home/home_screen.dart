@@ -33,7 +33,9 @@ class HomeScreen extends StatelessWidget {
                 Spacer(flex: 4),
               ],
             ),
-            const BottomNavigationWidget()
+            const BottomNavigationWidget(
+              currentScreen: CurrentScreen.home,
+            )
           ],
         ),
       ),

@@ -6,8 +6,13 @@ import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+enum CurrentScreen { home, search }
+
 class BottomNavigationWidget extends StatelessWidget {
-  const BottomNavigationWidget({Key? key}) : super(key: key);
+  final CurrentScreen currentScreen;
+
+  const BottomNavigationWidget({Key? key, required this.currentScreen}) : super(key: key);
+  static const _buttonPadding = EdgeInsets.all(4);
 
   BoxDecoration _boxDecoration(ThemeProvider themeProvider) => BoxDecoration(
       borderRadius: const BorderRadius.only(
@@ -30,15 +35,21 @@ class BottomNavigationWidget extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ButtonWidget(
-                  toggle: true,
-                  text: AppLocalizations.of(context).translate("home_screen"),
-                  onPressed: () => Routers.showHomeScreen(context, replace: true),
+                Padding(
+                  padding: _buttonPadding,
+                  child: ButtonWidget(
+                    toggle: currentScreen == CurrentScreen.home ? false : true,
+                    text: AppLocalizations.of(context).translate("home_screen"),
+                    onPressed: () => Routers.showHomeScreen(context, replace: true),
+                  ),
                 ),
-                ButtonWidget(
-                  toggle: true,
-                  text: AppLocalizations.of(context).translate("search_screen"),
-                  onPressed: () => Routers.showSearchScreen(context, replace: false),
+                Padding(
+                  padding: _buttonPadding,
+                  child: ButtonWidget(
+                    toggle: currentScreen == CurrentScreen.search ? false : true,
+                    text: AppLocalizations.of(context).translate("search_screen"),
+                    onPressed: () => Routers.showSearchScreen(context, replace: true),
+                  ),
                 )
               ],
             ),
