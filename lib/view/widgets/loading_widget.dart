@@ -9,7 +9,7 @@ class LoadingWidget extends StatelessWidget {
   static const _height = 100.00;
 
   BoxDecoration _boxDecoration(ThemeProvider themeProvider) =>
-      BoxDecoration(color: themeProvider.containerColor, shape: BoxShape.circle, boxShadow: [AppTheme.boxShadowWhite]);
+      BoxDecoration(color: themeProvider.containerColor, shape: BoxShape.circle, boxShadow: [themeProvider.boxShadow]);
   static const _padding = EdgeInsets.symmetric(vertical: AppTheme.defaultPadding, horizontal: AppTheme.paddingSmall);
 
   @override
@@ -19,10 +19,12 @@ class LoadingWidget extends StatelessWidget {
         builder: (cxt, themeProvider, child) {
           return Center(
             child: Container(
-              height: _height,
+              width: _height,
               margin: _padding,
               decoration: _boxDecoration(themeProvider),
-              child: const CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                backgroundColor: themeProvider.containerColor,
+              ),
             ),
           );
         },

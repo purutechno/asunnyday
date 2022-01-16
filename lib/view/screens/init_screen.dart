@@ -26,6 +26,6 @@ class _InitScreenState extends State<InitScreen> {
   Widget build(BuildContext context) {
     //This widget will keep spinning until all values
     //are obtained
-    return HomeScreen();
+    return LoadingWidget();
   }
 }
