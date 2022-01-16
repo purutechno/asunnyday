@@ -3,7 +3,6 @@ import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class Themes extends StatelessWidget {
-  final String text;
   final bool left;
   final double margin;
   final double width;
@@ -11,7 +10,6 @@ class Themes extends StatelessWidget {
 
   const Themes(
       {Key? key,
-      required this.text,
       required this.left,
       required this.margin,
       required this.width,
@@ -32,13 +30,6 @@ class Themes extends StatelessWidget {
         child: SizedBox(
           width: width,
           height: AppTheme.sizeSmallButton,
-          child: Center(
-            child: TextWidget(
-              text: text,
-              fontSize: AppTheme.fontSizeTTCommonsPro16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
         ),
       ),
     );

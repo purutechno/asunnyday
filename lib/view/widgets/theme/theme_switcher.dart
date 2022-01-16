@@ -1,4 +1,3 @@
-import 'package:asunnyday/view/widgets/text_widget.dart';
 import 'package:asunnyday/view/widgets/theme/themes.dart';
 import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
@@ -7,14 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ThemeSwitcher extends StatefulWidget {
-  final String falseText;
-  final String trueText;
   final bool initialValue;
 
   const ThemeSwitcher({
     Key? key,
-    required this.falseText,
-    required this.trueText,
     this.initialValue = false,
   }) : super(key: key);
 
@@ -43,24 +38,14 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
           width: fullWidth,
           decoration: BoxDecoration(
             color: themeProvider.containerColor,
-            borderRadius: BorderRadius.circular(AppTheme.sizeMediumButton / 2),
+            borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
           ),
           child: Stack(
             children: [
               //The Toggler
-              Themes(
-                  margin: margin,
-                  width: buttonWidth,
-                  text: widget.falseText,
-                  left: false,
-                  toggleValue: () => _toggleValue(themeProvider)),
+              Themes(margin: margin, width: buttonWidth, left: false, toggleValue: () => _toggleValue(themeProvider)),
               //The Toggler
-              Themes(
-                  margin: margin,
-                  width: buttonWidth,
-                  text: widget.trueText,
-                  left: true,
-                  toggleValue: () => _toggleValue(themeProvider)),
+              Themes(margin: margin, width: buttonWidth, left: true, toggleValue: () => _toggleValue(themeProvider)),
               //Animated Shifter
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 200),
@@ -75,14 +60,7 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
                     decoration: BoxDecoration(
                       //color based on theme
                       color: themeProvider.switcherColor,
-                      borderRadius: BorderRadius.circular(AppTheme.sizeSmallButton / 2),
-                    ),
-                    child: Center(
-                      child: TextWidget(
-                        text: toggleValue ? widget.trueText : widget.falseText,
-                        fontSize: AppTheme.fontSizeTTCommonsPro16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      borderRadius: BorderRadius.circular(AppTheme.borderRadiusDefault),
                     ),
                   ),
                 ),
@@ -95,6 +73,7 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
   }
 
   void _toggleValue(ThemeProvider themeProvider) {
+    //Switching theme
     themeProvider.toggleTheme();
     setState(() => toggleValue = !toggleValue);
   }
