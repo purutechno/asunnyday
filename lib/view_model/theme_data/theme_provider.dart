@@ -2,7 +2,7 @@ import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {
-  bool isPurpleTheme = false;
+  bool isPurpleTheme = true;
 
   //Theme data for Text Button :- Button widget
   ButtonStyle getButtonColor({bool toggle = false}) {
@@ -20,7 +20,8 @@ class ThemeProvider with ChangeNotifier {
     }
   }
 
-  Color get weatherIconColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+  Color get weatherIconColor =>
+      isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //Button Text Color :- Button Widget
   Color buttonTextColor({bool toggle = false}) {
@@ -38,21 +39,26 @@ class ThemeProvider with ChangeNotifier {
   }
 
   //The text inside the search field color
-  Color get searchFieldColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+  Color get searchFieldColor =>
+      isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //Theme Switcher Color
-  Color get switcherColor => isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
+  Color get switcherColor =>
+      isPurpleTheme ? AppTheme.colorBlackPurple : AppTheme.colorCreamyWhite;
 
   //This gets the boxShadow for all the containers in the app
   //Default Value is based on Default Theme
-  BoxShadow get boxShadow => isPurpleTheme ? AppTheme.boxShadowWhite : AppTheme.boxShadowDefault;
+  BoxShadow get boxShadow =>
+      isPurpleTheme ? AppTheme.boxShadowWhite : AppTheme.boxShadowDefault;
 
   //This gets the color for all the containers in the app
   //Default Value is based on Default Theme
-  Color get containerColor => isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
+  Color get containerColor =>
+      isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
 
   //Gets the active theme
-  ThemeMode get currentTheme => isPurpleTheme ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get currentTheme =>
+      isPurpleTheme ? ThemeMode.dark : ThemeMode.light;
 
   void toggleTheme() {
     isPurpleTheme = !isPurpleTheme;
@@ -87,7 +93,9 @@ class ThemeProvider with ChangeNotifier {
     // is not triggering the text color :- Base Text Widget is configured Directly]
     final darkTextTheme = const TextTheme(
       bodyText2: textStyleForDarkTheme,
-    ).apply(displayColor: AppTheme.colorBlackPurple, bodyColor: AppTheme.colorBlackPurple);
+    ).apply(
+        displayColor: AppTheme.colorBlackPurple,
+        bodyColor: AppTheme.colorBlackPurple);
 
     return ThemeData(
         brightness: Brightness.dark,
@@ -111,7 +119,8 @@ class ThemeProvider with ChangeNotifier {
     ),
   );
 
-  TextButtonThemeData lightTextButtonTheme() => TextButtonThemeData(style: lightTextButtonStyles);
+  TextButtonThemeData lightTextButtonTheme() =>
+      TextButtonThemeData(style: lightTextButtonStyles);
 
   ThemeData get creamyWhiteTheme {
     //Text Style for light Theme
@@ -119,8 +128,11 @@ class ThemeProvider with ChangeNotifier {
 
     //Text Style for all Text in the app for lightTheme [Note : This method
     // is not triggering the text color :- Base Text Widget is configured Directly]
-    final lightThemeTextStyles = const TextTheme(button: textStyleForLightTheme, bodyText2: textStyleForLightTheme)
-        .apply(displayColor: AppTheme.colorCreamyWhite, bodyColor: AppTheme.colorCreamyWhite);
+    final lightThemeTextStyles = const TextTheme(
+            button: textStyleForLightTheme, bodyText2: textStyleForLightTheme)
+        .apply(
+            displayColor: AppTheme.colorCreamyWhite,
+            bodyColor: AppTheme.colorCreamyWhite);
 
     return ThemeData(
         brightness: Brightness.light,
