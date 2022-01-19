@@ -7,20 +7,22 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:  Column(
-        children: const [
-          //Flexible Spacing
-          Spacer(flex: 2),
-          //This container rotates in clockwise direction
-          RotatingContainer(),
-          //Flexible Spacing
-          Spacer(flex: 2),
-          //This Text fades in and out
-          FadingText(),
-          //Flexible Spacing
-          Spacer(flex: 1),
-        ],
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: const [
+            //Flexible Spacing
+            Spacer(flex: 2),
+            //This container rotates in clockwise direction
+            RotatingContainer(),
+            //Flexible Spacing
+            Spacer(flex: 2),
+            //This Text fades in and out
+            FadingText(),
+            //Flexible Spacing
+            Spacer(flex: 1),
+          ],
+        ),
       ),
     );
   }
