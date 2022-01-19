@@ -1,3 +1,4 @@
+import 'package:asunnyday/view/widgets/loading/loading_widget.dart';
 import 'package:asunnyday/view_model/home/permission_provider.dart';
 import 'package:asunnyday/view_model/internationalization/app_language.dart';
 import 'package:flutter/material.dart';
