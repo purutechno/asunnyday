@@ -50,6 +50,12 @@ dependencies:
   http: ^0.13.4
 
 
+  #base Packages
+  base:
+    path: base
+
+
+
 
 
 dev_dependencies:

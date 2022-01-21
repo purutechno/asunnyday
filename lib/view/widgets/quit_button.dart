@@ -1,4 +1,4 @@
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:base/styles/app_theme.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 

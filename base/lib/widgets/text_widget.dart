@@ -1,17 +1,9 @@
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:base/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
-  final String text;
-  final double fontSize;
-  final String fontFamily;
-  final FontWeight fontWeight;
-  final TextAlign textAlign;
-  final int? maxLines;
-  final TextOverflow overflow;
-
-  const TextWidget(
-     {Key? key,
+  const TextWidget({
+    Key? key,
     required this.text,
     this.fontSize = AppTheme.fontSizeTTCommonsPro,
     this.fontFamily = AppTheme.fontFamilyTTCommonsPro,
@@ -20,6 +12,14 @@ class TextWidget extends StatelessWidget {
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
   }) : super(key: key);
+
+  final String text;
+  final double fontSize;
+  final String fontFamily;
+  final FontWeight fontWeight;
+  final TextAlign textAlign;
+  final int? maxLines;
+  final TextOverflow overflow;
 
   @override
   Widget build(BuildContext context) {

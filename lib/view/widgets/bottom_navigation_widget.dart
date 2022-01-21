@@ -1,7 +1,7 @@
 import 'package:asunnyday/routers.dart';
 import 'package:asunnyday/view/widgets/button_widget.dart';
 import 'package:asunnyday/view_model/internationalization/app_localizations.dart';
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:base/styles/app_theme.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ class BottomNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Listening to theme
+    //Listening to styles
     return Consumer<ThemeProvider>(
       builder: (cxt, themeProvider, child) {
         return Align(

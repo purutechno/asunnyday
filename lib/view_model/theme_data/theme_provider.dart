@@ -1,5 +1,5 @@
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:base/styles/app_theme.dart';
 
 class ThemeProvider with ChangeNotifier {
   bool isPurpleTheme = true;
@@ -56,7 +56,7 @@ class ThemeProvider with ChangeNotifier {
   Color get containerColor =>
       isPurpleTheme ? AppTheme.colorCreamyWhite : AppTheme.colorBlackPurple;
 
-  //Gets the active theme
+  //Gets the active styles
   ThemeMode get currentTheme =>
       isPurpleTheme ? ThemeMode.dark : ThemeMode.light;
 

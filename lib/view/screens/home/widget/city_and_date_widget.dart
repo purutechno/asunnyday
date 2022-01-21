@@ -1,8 +1,8 @@
 import 'package:asunnyday/utils/date_time_formatter.dart';
 import 'package:asunnyday/utils/null_replacer.dart';
-import 'package:asunnyday/view/widgets/text_widget.dart';
+import 'package:base/widgets/text_widget.dart';
 import 'package:asunnyday/view_model/home/current_location_provider.dart';
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:base/styles/app_theme.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

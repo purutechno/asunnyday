@@ -1,4 +1,4 @@
-import 'package:asunnyday/view_model/theme_data/app_theme.dart';
+import 'package:base/styles/app_theme.dart';
 import 'package:asunnyday/view_model/theme_data/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +7,7 @@ class ButtonWidget extends StatelessWidget {
   final String text;
 
   //Switches to reciprocal colors
-  //to the current theme
+  //to the current styles
   final bool toggle;
   final double fontSize;
   final FontWeight fontWeight;

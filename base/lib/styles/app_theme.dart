@@ -72,15 +72,15 @@ class AppTheme {
   );
 
 
-  //text color for light theme
+  //text color for light styles
   static const TextStyle textStylesLightTheme = TextStyle(
-        color: AppTheme.colorBlackPurple,
-      );
+    color: AppTheme.colorBlackPurple,
+  );
 
   //text color for dark Theme
   static const TextStyle textStylesDarkTheme =  TextStyle(
-        color: AppTheme.colorCreamyWhite,
-      );
+    color: AppTheme.colorCreamyWhite,
+  );
 
 
   static const double borderRadiusDefault = 24.0;
