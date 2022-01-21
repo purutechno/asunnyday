@@ -1,4 +1,4 @@
-import 'package:base/theme/app_theme.dart';
+import 'package:base/styles/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
